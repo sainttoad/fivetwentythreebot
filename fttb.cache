@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)https://time.is/time_zones -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Time.is 09:44pm</title>
+<script type="text/javascript" async="" src="./fttb_files/atrk.js"></script><script async="" src="./fttb_files/analytics.js"></script><script>
+var updint=1000,U="undefined",N=null,E=true,F=!E,O="object",S="string",D=document,A=0,fc={a:0},bfc=1,uT="Time.is ",sT,tD,pY=lY=67,cY=syncn=rsy=0,ztrans=1489312800000,newzo=-420,ss={"0104":"&uarr; 07:24AM &darr; 05:05PM (9h 41m)","0105":"&uarr; 07:24AM &darr; 05:06PM (9h 42m)"},destT=0,yrp="",csup=1,czo=0,rqT=0,syncT=0,syncquota=10,earliest_syncT=0,xR=1,syncm='',syncdt='',adH=110,mZ=64,ltr=1,ticks=0,state={chosen_loc:0,current_page:"time zones"};
+function _tD(M){sT=M;tD=new Date().getTime()-M-Math.round(lY/2);cY=lY-pY;if(cY<10)cY=10}
+_tD(1483593524985)
+function gob(e){if(typeof e==O)return e;if(D.getElementById)return D.getElementById(e);return eval(e)}
+function bluritem(e){e=gob(e);e.className=e.className.replace('focused','blr');bfc=1}
+function focusitem(e){bfc=0;e=gob(e);e.className=e.className.replace('blr','focused');e.className=e.className.replace('submitted','focused')}
+function mouseover(e){e.className=e.className.replace('mout','hovered')}
+function mouseout(e){e.className=e.className.replace('hovered','mout')}
+function setfocus(g){if(typeof fc[g]==U)fc[g]=1;else fc[g]++
+if(fc['a']!=0&&fc['a']!=g)losefocus(fc['a'])
+fc['a']=g;gob(g).className=gob(g).className.replace('hide','show');bfc=0}
+function losefocus(g){if(fc['a']!=g)fc[g]=0;else{fc[g]--;if(fc[g]<1){fc['a']=0;fc[g]=0;gob(g).className=gob(g).className.replace('show','hide');bfc=1}}}
+dmode=0
+function setcookie(n,v){var x=new Date();x.setDate(x.getDate()+365);D.cookie=n+'='+encodeURIComponent(v)+'; expires='+x.toGMTString()+'; path=/'
+if(D.cookie.length<1)csup=0}
+function httpSync(){
+nextSyncT=0
+array_name='main'
+xR=N
+gob('syncH').innerHTML=p_syncing;gob('syncDtl').innerHTML='&nbsp;';gob('msgs').className=gob('msgs').className.replace('hdn','vsbl')
+if(window.XMLHttpRequest)xR=new XMLHttpRequest()
+else if(window.ActiveXObject)xR=new ActiveXObject("Microsoft.XMLHTTP")
+if(xR!=N){
+rqT=new Date()
+czo=-rqT.getTimezoneOffset()
+xR.onreadystatechange=s_C
+xR.open('get','/t/?'+l+'.'+syncn+'.'+lY+'.'+tD+'.'+rsy+'p.'+czo+'.'+locs[array_name][conf['h']][1]+'.'+rqT.getTime()+'.'+sT+'.'+yrp,E)
+xR.send(N)
+yrp=''
+}else xR='N/A'
+}
+var Y=['','']
+function s_C(){
+var o,dots='...',sym=Y[0],syd=Y[1]
+if(xR.readyState==4){
+if(xR.status==200){
+var rpT=new Date(),n=rpT-rqT,r=xR.responseText.split("\n")
+sT=r[1]
+var prevST=syncT
+syncT=new Date()
+syncT.setTime(syncT.getTime()-tD)
+if(syncn===0||rsy||n<lY){if(r[0].length==13)r.unshift('ok');if(r.length<7||r[0]!=='ok'){
+if(r[0].substr(0,6)=='error:')p_failm=r[0].substr(6)
+else gob('msgs').className='w90 pulldowncv nonet'
+hideTO=setTimeout('sync_cleanup(0)',4000)
+}else{p_failm=p_fail
+if(rsy&&(syncT-prevST<60000)){syncquota--
+if(syncquota<0)earliest_syncT=new Date(syncT.getTime()+120000)
+}else if(earliest_syncT==0)syncquota=10
+}
+rsy=0
+lY=n
+_tD(r[1])
+
+Y=T_I.initClock()
+sym=Y[0]
+syd=Y[1]
+}
+nextSyncT=new Date()
+nextSyncT.setTime(nextSyncT.getTime()-tD+3600000)
+if(49<cY&&syncn<2){for(var i=0;i<syncn;i++)dots+='.'
+sym=p_syncing+dots
+syd=''
+syncn++
+httpSync()}
+else{o=gob('front_loc');if(o)o.style.visibility='visible'
+;o=gob('socbuttons');if(o)o.style.visibility='inherit'
+}
+if(syd=='')syd='&nbsp;'
+spdays={}
+for(i=5;i<r.length-1;i++)spdays[r[i].substr(0,4)]=r[i].substr(4,r[i].length)
+if(zone_id!=='UTC'){// zone_offset=r[2];zone_id=r[3]
+}
+}else{sym=p_conn_failed
+syd=xR.statusText
+if(syd!='')syd=' ('+syd+')'
+if(!A){if(xR.statusText!="")sym+=syd
+syd='<a href="javascript:T_I.check_again()">'+p_try_again+'</a>'
+}
+}
+gob('syncH').innerHTML=sym
+gob('syncDtl').innerHTML=syd
+setmsgH(0)
+}}
+function sg(q,sd){
+T_I.set_susdiv(sd);o=gob(sd)
+if((N!==q.match(/^Location \d+ \(optional\)$/))||q=='Enter location'||q=='Automatic')return ''
+q=q.replace(/ +$/,'').replace(/^ +/, '')
+if(q.length<4)q=q.toLowerCase()
+var n=sd.replace('susdiv','')
+if((typeof complocurls!=U)&&(typeof complocurls[n]!=U)&&(complocurls[n][0]==q))return ''
+if(typeof prevq[sd]!==U&&q==prevq[sd]||q==e_loc){o.className=o.className.replace('hide','show')
+return ''}
+if(q.length<1){o.innerHTML='';chosen_sus[sd]=0;prevq[sd]=q;current_q[sd]=q;return ''}
+prevq[sd]=q
+if(sus[q]){T_I.populate_sus(sd,q,1);return ''}
+var xh=N,xhp=[]
+if(window.XMLHttpRequest)xh=new XMLHttpRequest()
+else if(window.ActiveXObject)xh=new ActiveXObject('Microsoft.XMLHTTP')
+if(xh!=N){rqT=new Date()
+xh.onreadystatechange=function(){if(xh.readyState==4)if(xh.status==200){
+var xr=xh.responseText.split("\n"),st=xr.shift(),q1=xr.shift()
+for(var i in xr){
+if(i==='indexOf')break
+xr[i]=xr[i].split('	')
+}
+sus[q1]=xr
+if(typeof prevsustime[xhp['sd']]==U||prevsustime[xhp['sd']]<xhp['t']){prevsustime[xhp['sd']]=xhp['t'];T_I.populate_sus(xhp['sd'],xhp['q'],1)}}}
+xhp['sd']=sd
+xhp['t']=new Date()
+if(q=='.')q='.a'
+if(q=='..')q='.,'
+xhp['q']=q
+xh.open("get",'/s/'+l+'/'+q.length+'/'+encodeURIComponent(q.replace(/ /g,'_'))+'?'+xhp['t'].getTime(),E)
+xh.send(N)
+}else xh='N/A'
+}
+function arrows(sd,e){var k=e.which||e.keyCode
+if(k==40)T_I.cycle_sus(sd,1)
+else if(k==38)T_I.cycle_sus(sd,-1)
+else if(k==9||k==13)T_I.take_chosen(sd,k)
+else return E
+return F}
+function togglesimple(x){var g='',c=bod.className
+if(x!==0&&c.indexOf('simplify')!=-1){dmode=0;bod.className=c.replace('simplify','showall');x=1}
+else if(x!==1&&c.indexOf('showall')!=-1){dmode=1;bod.className=c.replace('showall','simplify');x=0;g='none'}else x=''
+if(x!==''){var gp=gob("___plusone_0");if(gp!=N)gp.style.display=g
+setsizes(1);T_I.tick('',0)}}var kacs={h:"/",j:"/just/San_Mateo,_California",s:"js:tl_a()",C:"/calendar"},kdown={k0:0,k17:0,k18:0}
+handle_keys=function(ev){
+if(!bfc)return E
+var e=ev||event
+var key=e.which||e.keyCode
+for(var k in kdown){
+if(k==='indexOf')break
+if(kdown[k]!=0){var d=new Date;if(kdown[k]<d.getUTCSeconds()-10)kdown[k]=0
+else return E}
+}
+if(typeof kacs[String.fromCharCode(key)]===S){
+var u=kacs[String.fromCharCode(key)]
+if(u.substr(0,3)=="js:")eval(u.substr(3))
+else {if(u.substr(0,4)=="http")open(u,"_blank")
+else location=u
+}
+return F
+}
+if((96<key&&key<123)||(64<key&&key<91))t_search(1)
+return E
+}
+handle_arrow_keys=function(ev){
+if(fc["a"]==1)return E
+var e=ev||event
+var k=e.which||e.keyCode
+if(k==27){toggle_menu(0);t_search(0);return F}
+if(k==0||(16<k&&k<19)||k==91||k==93||k==224){var d=new Date;kdown["k"+k]=d.getUTCSeconds()}
+if(bfc&&36<k&&k<41&&typeof kacs[k]===S){
+var u=kacs[k]
+if(u.substr(0,3)=="js:")eval(u.substr(3))
+else location=u
+return F
+}
+return E
+}
+handle_keys_up=function(ev){
+var e=ev||event
+var k=e.which||e.keyCode
+if(k==0||(16<k&&k<19)||k==91||k==93||k==224)kdown["k"+k]=0
+}
+function toggle_more(){
+var t=gob('top'),cn='less'
+if(t.className=='less')cn='more'
+t.className=cn
+set_mw()
+}
+D.onkeypress=this.handle_keys
+D.onkeydown=this.handle_arrow_keys
+D.onkeyup=this.handle_keys_up
+</script>
+<meta name="description" content="List of countries grouped by UTC offset">
+<meta property="og:image" content="//static.time.is/img/shareable/time_is_110111.png"><meta name="viewport" content="user-scalable=0, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi, width=device-width">
+<link rel="image_src" href="https://static.time.is/screenshots/Time.is_11.11.11_700x525.png"><link rel="icon" type="image/png" href="https://static.time.is/favicon.ico">
+<link rel="apple-touch-icon" href="https://static.time.is/img/apple-touch-icon.png">
+<style>
+*{margin:0;padding:0;border:0;outline:0}
+div,h1,h2,h3,label{clear:both}
+div,img,form{float:left}
+body{background:#fff}
+span a,.nw{white-space:nowrap}
+body,select,input,textarea{font:18px/26px 'Times New Roman',Times,FreeSerif,serif;color:#333;letter-spacing:2px}
+#twd,#twd1{font-family:'Times New Roman',Times,FreeSerif,serif}
+.divider{color:#ccc}
+.lsp{float:right;color:#333}
+.lsp ul{list-style:none;text-align:right}
+a:link,a:visited{color:#333;text-decoration:none;border-bottom:1px solid #ccc}
+
+h1,h2,#dd{font-size:36px;line-height:40px;font-weight:normal;letter-spacing:1px}
+.w90{margin-left:5%;width:90%}
+#c{padding-bottom:40px}
+#msgdiv{float:left;position:relative;z-index:8}
+div#msgs h1{margin-right:30px;float:left}
+.lg a:link,.lg a:visited{background:#c35;float:left;display:block;color:#fff;border:0;padding:20px;font:26px/20px 'Timeis',Verdana-Bold,'HelveticaNeue-CondensedBlack','Avenir-Black','Arial-BoldMT',Arial,sans-serif;font-weight:900;letter-spacing:2px}
+.lg{z-index:9;position:relative}
+#pl{display:none}
+#clock0 div{font-weight:bold;cursor:pointer;clear:none;color:#000;white-space:nowrap}
+#twd{letter-spacing:0}
+
+#cv{z-index:2
+}
+#leaps{position:relative}
+.leap0{top:0px}
+@keyframes leap60{
+0%{top:0px}
+30%{top:-40px}
+50%{top:-50px}
+80%{top:-40px}
+100%{top:0px}
+}
+@-webkit-keyframes leap60{
+0%{top:0px}
+30%{top:-40px}
+50%{top:-50px}
+80%{top:-40px}
+100%{top:0px}
+}
+.leap1{color:#c35;
+animation:leap60 1s linear;
+-webkit-animation:leap60 1s linear;
+}
+
+#top{width:90%;margin:0 5%}
+#clock0_bg{width:100%}
+#clock0,#pL,#lC,#dd,#daydiv{text-align:right}
+select{height:40px}
+#pL a:link,#pL a:visited,#pL1 a,#lC,#daydiv,#daydiv1{color:#333}
+
+#pL,#pL1{margin-bottom:20px}
+#favswindow{position:relative;xxheight:71px;width:100%}
+#favslider{width:2000px;position:absolute;right:0}
+#favs{width:100%;list-style:none;margin:0 0 10px 0;padding:0;float:right}
+#favs span{color:#999}
+.tbx div{clear:none;float:left;text-align:left;white-space:nowrap;font-size:18px;line-height:22px;font-style:normal;font-weight:normal;letter-spacing:2px}
+.tbx a{display:block;margin:0 0 10px 10px;padding:10px 20px;border:1px solid #eee;background:#eee;text-decoration:none}
+.txtin,.dateinput{background:#eee;border:1px solid #ddd;width:138px;padding:10px;color:#333}
+.mout{border-color:#eee}
+</style><link rel="stylesheet" href="./fttb_files/t4.css"><script src="./fttb_files/t11.js"></script>
+</head>
+<body id="bdy" onload="in_s()" class="factspage showall op bw  landscape"><div id="top">
+<div class="lg"><h2><a href="https://time.is/" target="_top" title="Time.is">Time.is</a></h2></div>
+<div class="icon-nav tr">
+<a href="https://time.is/time_zones#nav" onclick="return toggle_menu(1)" title="menu">
+<div style="margin-top:2px;width:100%;border-top:5px solid #aaa;padding:3px 0 2px 0;border-bottom:5px solid #aaa;margin-bottom:5px"></div>
+<div style="width:100%;border-top:5px solid #aaa;padding:2px 0;margin-bottom:4px"></div>
+</a>
+</div>
+<script>
+function t_search(x){
+var qb=gob('qbox'),qi=gob('q'),w=600
+if(x){
+scrollTo(0,0)
+qi.focus()
+if(ww<915)w=ww*.9-80
+if(qi.value.indexOf('')!=-1)qi.value=qi.value.replace('','');setfocus('susdiv');sg(qi.value,'susdiv');focusitem(qi);if(dmode)bod.className=bod.className.replace('simplify','showall');gob('qbox').className='fcs'
+}else{
+qi.blur()
+w=100
+if(ww<915)w=100
+if(ww<641||state.current_page=='Unix time')w=0
+if(qi.value==='')qi.value=''
+losefocus('susdiv')
+bluritem(qi)
+if(dmode)bod.className=bod.className.replace('showall','simplify')
+setTimeout("gob('qbox').className=''",200)
+}
+qi.style.width=w+'px'
+}
+</script>
+<form id="qbox" class="tr" action="https://time.is/" method="get" autocomplete="off" accept-charset="UTF-8" onsubmit="return T_I.submit(gob(&#39;q&#39;).value)">
+<input type="text" id="q" name="q" value="" tabindex="1" maxlength="100" accesskey="3" class="txtin blr mout" onfocus="t_search(1)" onblur="t_search(0)" onmouseover="mouseover(this)" onmouseout="mouseout(this)" onkeydown="arrows(&#39;susdiv&#39;,event)" onkeyup="sg(this.value,&#39;susdiv&#39;)">
+<div id="susdiv" class="susdiv" onmouseover="setfocus(&#39;susdiv&#39;)" onmouseout="losefocus(&#39;susdiv&#39;)"></div>
+</form>
+</div>
+<div id="cvwr" class="w90"><div><div><h1 style="width:100%">Time zones</h1><h2 style="width:100%;margin-bottom:20px">List of countries grouped by current UTC offset</h2>
+<p>This page lists all countries of the world, plus major regions and cities, grouped by their current UTC offset.
+</p>
+
+<ul>
+<li><a href="https://time.is/UTC">UTC</a> is practically the same as <a href="https://time.is/GMT">GMT</a>.</li>
+<li>A <em>UTC offset</em> is the difference in time between UTC time and a location's observed time.
+</li><li>There are currently 39 observed UTC offsets in the world (38 when Iran is on daylight saving time).</li>
+<li>Minor exceptions and unofficial time zones are not included on this page.</li>
+<li>Find time and time zone info for other locations through the search box at the top of this page.</li>
+<li>Country names are <span class="country">highlighted</span>.
+</li><li>Countries with multiple time zones have a <span class="country multizone">grey background</span>.
+</li><li>Regions with multiple time zones have a <span class="multizone">dashed underline</span>.
+
+</li></ul>
+
+
+
+<p>
+This page will be updated when a change in observed UTC offset occurs, such as when DST begins or ends somewhere.
+The next update is scheduled for 2017-02-19 02:00 UTC, when  DST ends in  parts of <a href="https://time.is/Brazil">Brazil</a>.
+</p>
+
+
+</div></div></div><div class="tr" style="padding:0 5% 20px 5%"><div class="rad" style="float:left;padding-top:0"><div id="ad_1" style="width:768px;height:90px">
+<noscript>&lt;iframe id="a56310d068" name="a56310d068" src="//pixfuture-d.openx.net/w/1.0/afr?auid=538090345&amp;cb=4" frameborder="0" scrolling="no" width="768" height="90"&gt;&lt;a href="//pixfuture-d.openx.net/w/1.0/rc?cs=a56310d068&amp;cb=4" &gt;&lt;img src="//pixfuture-d.openx.net/w/1.0/ai?auid=538090345&amp;cs=a56310d068&amp;cb=4" border="0" alt=""&gt;&lt;/a&gt;&lt;/iframe&gt;</noscript>
+</div>
+<script>
+var OX_ads=OX_ads||[]
+OX_ads.push({slot_id:"ad_1",auid:"538090345"})
+</script>
+<script src="https://pixfuture-d.openx.net/w/1.0/jstag"></script></div></div><div class="section even"><h1>UTC-12</h1><div class="cloud scloud w90"><ul><li id="c0"><a href="https://time.is/U.S._Minor_Outlying_Islands" class="s1 country multizone bold" onmouseover="hvr(0,1)" onmouseout="hvr(0)">U.S. Minor Outlying Islands</a>
+<ul>
+<li><a href="https://time.is/Baker_Island" class="s2">Baker Island</a></li>
+<li><a href="https://time.is/Howland_Island" class="s2">Howland Island</a></li>
+</ul></li>
+</ul></div></div>
+<div class="section odd"><h1>UTC-11</h1><div class="cloud scloud w90"><ul><li id="c1"><a href="https://time.is/American_Samoa" class="s3 country" onmouseover="hvr(1,1)" onmouseout="hvr(1)">American Samoa</a>
+<ul><li><a href="https://time.is/Pago_Pago" class="s6">Pago Pago</a></li>
+</ul></li>
+<li id="c2"><a href="https://time.is/Niue" class="s2 country bold" onmouseover="hvr(2,1)" onmouseout="hvr(2)">Niue</a>
+<ul><li><a href="https://time.is/Alofi" class="s5">Alofi</a></li>
+</ul></li>
+<li id="c3"><a href="https://time.is/U.S._Minor_Outlying_Islands" class="s1 country multizone bold" onmouseover="hvr(3,1)" onmouseout="hvr(3)">U.S. Minor Outlying Islands</a>
+<ul><li><a href="https://time.is/Itascatown_pre-WW2" class="s4">Itascatown pre-WW2</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC-10</h1><div class="cloud scloud w90"><ul><li id="c6"><a href="https://time.is/Cook_Islands" class="s2 country bold" onmouseover="hvr(6,1)" onmouseout="hvr(6)">Cook Islands</a>
+<ul><li><a href="https://time.is/Avarua" class="s7">Avarua</a></li>
+</ul></li>
+<li id="c5"><a href="https://time.is/French_Polynesia" class="s3 country multizone bold" onmouseover="hvr(5,1)" onmouseout="hvr(5)">French Polynesia</a>
+<ul><li><a href="https://time.is/Papeete" class="s8">Papeete</a></li>
+</ul></li>
+<li id="c7"><a href="https://time.is/U.S._Minor_Outlying_Islands" class="s1 country multizone bold" onmouseover="hvr(7,1)" onmouseout="hvr(7)">U.S. Minor Outlying Islands</a>
+<ul><li><a href="https://time.is/Millersville_-_pre-WW2_settlement" class="s6">Millersville - pre-WW2 settlement</a></li>
+</ul></li>
+<li id="c4"><a href="https://time.is/United_States" class="s4 country multizone" onmouseover="hvr(4,1)" onmouseout="hvr(4)">United States</a>
+<ul><li><a href="https://time.is/Hawaii" class="s5">Hawaii</a></li>
+<li><a href="https://time.is/Honolulu" class="s9">Honolulu</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC-9:30</h1><div class="cloud scloud w90"><ul><li id="c8"><a href="https://time.is/French_Polynesia" class="s1 country multizone bold" onmouseover="hvr(8,1)" onmouseout="hvr(8)">French Polynesia</a>
+<ul><li><a href="https://time.is/Atuona" class="s2">Atuona</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC-9</h1><div class="cloud scloud w90"><ul><li id="c10"><a href="https://time.is/French_Polynesia" class="s1 country multizone bold" onmouseover="hvr(10,1)" onmouseout="hvr(10)">French Polynesia</a>
+<ul><li><a href="https://time.is/Rikitea" class="s4">Rikitea</a></li>
+</ul></li>
+<li id="c9"><a href="https://time.is/United_States" class="s2 country multizone bold" onmouseover="hvr(9,1)" onmouseout="hvr(9)">United States</a>
+<ul><li><a href="https://time.is/Alaska" class="s3 multizone">Alaska</a></li>
+<li><a href="https://time.is/Anchorage" class="s5">Anchorage</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC-8</h1><div class="cloud scloud w90"><ul><li id="c13"><a href="https://time.is/Canada" class="s1 country multizone bold" onmouseover="hvr(13,1)" onmouseout="hvr(13)">Canada</a>
+<ul><li><a href="https://time.is/British_Columbia" class="s7">British Columbia</a></li>
+<li><a href="https://time.is/Surrey" class="s10">Surrey</a></li>
+<li><a href="https://time.is/Vancouver" class="s9">Vancouver</a></li>
+<li><a href="https://time.is/Yukon" class="s8">Yukon</a></li>
+</ul></li>
+<li id="c12"><a href="https://time.is/Mexico" class="s2 country multizone bold" onmouseover="hvr(12,1)" onmouseout="hvr(12)">Mexico</a>
+<ul><li><a href="https://time.is/Mexicali" class="s8">Mexicali</a></li>
+<li><a href="https://time.is/Tijuana" class="s12">Tijuana</a></li>
+</ul></li>
+<li id="c14"><a href="https://time.is/Pitcairn_Islands" class="s1 country bold" onmouseover="hvr(14,1)" onmouseout="hvr(14)">Pitcairn Islands</a>
+<ul><li><a href="https://time.is/Adamstown" class="s11">Adamstown</a></li>
+</ul></li>
+<li id="c11"><a href="https://time.is/United_States" class="s3 country multizone bold" onmouseover="hvr(11,1)" onmouseout="hvr(11)">United States</a>
+<ul><li><a href="https://time.is/California" class="s4 bold">California</a></li>
+<li><a href="https://time.is/Los_Angeles" class="s13">Los Angeles</a></li>
+<li><a href="https://time.is/Nevada" class="s6 multizone">Nevada</a></li>
+<li><a href="https://time.is/Oregon" class="s5 multizone bold">Oregon</a></li>
+<li><a href="https://time.is/San_Diego" class="s14">San Diego</a></li>
+<li><a href="https://time.is/San_Francisco" class="s16">San Francisco</a></li>
+<li><a href="https://time.is/San_Jose,_United_States" class="s15">San Jose</a></li>
+<li><a href="https://time.is/Seattle" class="s12">Seattle</a></li>
+<li><a href="https://time.is/Washington" class="s4 bold">Washington</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC-7</h1><div class="cloud scloud w90"><ul><li id="c17"><a href="https://time.is/Canada" class="s1 country multizone bold" onmouseover="hvr(17,1)" onmouseout="hvr(17)">Canada</a>
+<ul><li><a href="https://time.is/Alberta" class="s8">Alberta</a></li>
+<li><a href="https://time.is/Calgary" class="s11">Calgary</a></li>
+<li><a href="https://time.is/Edmonton" class="s12">Edmonton</a></li>
+<li><a href="https://time.is/Northwest_Territories" class="s9">Northwest Territories</a></li>
+<li><a href="https://time.is/Nunavut" class="s10">Nunavut</a></li>
+</ul></li>
+<li id="c16"><a href="https://time.is/Mexico" class="s1 country multizone bold" onmouseover="hvr(16,1)" onmouseout="hvr(16)">Mexico</a>
+<ul><li><a href="https://time.is/Chihuahua" class="s10">Chihuahua</a></li>
+<li><a href="https://time.is/Ciudad_Ju%C3%A1rez" class="s13">Ciudad Juárez</a></li>
+</ul></li>
+<li id="c15"><a href="https://time.is/United_States" class="s2 country multizone bold" onmouseover="hvr(15,1)" onmouseout="hvr(15)">United States</a>
+<ul><li><a href="https://time.is/Albuquerque" class="s13">Albuquerque</a></li>
+<li><a href="https://time.is/Arizona" class="s3 multizone bold">Arizona</a></li>
+<li><a href="https://time.is/Colorado" class="s4 bold">Colorado</a></li>
+<li><a href="https://time.is/Denver" class="s15">Denver</a></li>
+<li><a href="https://time.is/El_Paso" class="s14">El Paso</a></li>
+<li><a href="https://time.is/Idaho" class="s6 multizone">Idaho</a></li>
+<li><a href="https://time.is/Montana" class="s7">Montana</a></li>
+<li><a href="https://time.is/New_Mexico" class="s5 bold">New Mexico</a></li>
+<li><a href="https://time.is/Phoenix" class="s16">Phoenix</a></li>
+<li><a href="https://time.is/Utah" class="s4 bold">Utah</a></li>
+<li><a href="https://time.is/Wyoming" class="s7">Wyoming</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC-6</h1><div class="cloud scloud w90"><ul><li id="c27"><a href="https://time.is/Belize" class="s1 country bold" onmouseover="hvr(27,1)" onmouseout="hvr(27)">Belize</a>
+<ul><li><a href="https://time.is/Belmopan" class="s10">Belmopan</a></li>
+</ul></li>
+<li id="c20"><a href="https://time.is/Canada" class="s2 country multizone bold" onmouseover="hvr(20,1)" onmouseout="hvr(20)">Canada</a>
+<ul><li><a href="https://time.is/Manitoba" class="s7">Manitoba</a></li>
+<li><a href="https://time.is/Regina" class="s8">Regina</a></li>
+<li><a href="https://time.is/Saskatchewan" class="s7">Saskatchewan</a></li>
+<li><a href="https://time.is/Saskatoon" class="s8">Saskatoon</a></li>
+<li><a href="https://time.is/Winnipeg" class="s9">Winnipeg</a></li>
+</ul></li>
+<li id="c26"><a href="https://time.is/Costa_Rica" class="s1 country bold" onmouseover="hvr(26,1)" onmouseout="hvr(26)">Costa Rica</a>
+<ul><li><a href="https://time.is/Lim%C3%B3n" class="s10">Limón</a></li>
+<li><a href="https://time.is/San_Jos%C3%A9" class="s10">San José</a></li>
+</ul></li>
+<li id="c21"><a href="https://time.is/Ecuador" class="s3 country multizone bold" onmouseover="hvr(21,1)" onmouseout="hvr(21)">Ecuador</a>
+<ul><li><a href="https://time.is/Puerto_Ayora" class="s8">Puerto Ayora</a></li>
+</ul></li>
+<li id="c24"><a href="https://time.is/El_Salvador" class="s1 country bold" onmouseover="hvr(24,1)" onmouseout="hvr(24)">El Salvador</a>
+<ul><li><a href="https://time.is/San_Salvador" class="s11">San Salvador</a></li>
+<li><a href="https://time.is/Santa_Ana,_Santa_Ana" class="s11">Santa Ana</a></li>
+</ul></li>
+<li id="c22"><a href="https://time.is/Guatemala" class="s2 country bold" onmouseover="hvr(22,1)" onmouseout="hvr(22)">Guatemala</a>
+<ul><li><a href="https://time.is/Guatemala_City" class="s8">Guatemala City</a></li>
+</ul></li>
+<li id="c23"><a href="https://time.is/Honduras" class="s2 country bold" onmouseover="hvr(23,1)" onmouseout="hvr(23)">Honduras</a>
+<ul><li><a href="https://time.is/San_Pedro_Sula" class="s10">San Pedro Sula</a></li>
+<li><a href="https://time.is/Tegucigalpa" class="s9">Tegucigalpa</a></li>
+</ul></li>
+<li id="c19"><a href="https://time.is/Mexico" class="s2 country multizone bold" onmouseover="hvr(19,1)" onmouseout="hvr(19)">Mexico</a>
+<ul><li><a href="https://time.is/Ciudad_Neza" class="s12">Ciudad Neza</a></li>
+<li><a href="https://time.is/Ecatepec_de_Morelos" class="s15">Ecatepec de Morelos</a></li>
+<li><a href="https://time.is/Guadalajara" class="s15">Guadalajara</a></li>
+<li><a href="https://time.is/Le%C3%B3n" class="s9">León</a></li>
+<li><a href="https://time.is/Mexico_City" class="s14">Mexico City</a></li>
+<li><a href="https://time.is/Monterrey" class="s9">Monterrey</a></li>
+<li><a href="https://time.is/Puebla" class="s12">Puebla</a></li>
+</ul></li>
+<li id="c25"><a href="https://time.is/Nicaragua" class="s1 country bold" onmouseover="hvr(25,1)" onmouseout="hvr(25)">Nicaragua</a>
+<ul><li><a href="https://time.is/Le%C3%B3n,_Nicaragua" class="s11">León</a></li>
+<li><a href="https://time.is/Managua" class="s11">Managua</a></li>
+</ul></li>
+<li id="c18"><a href="https://time.is/United_States" class="s3 country multizone bold" onmouseover="hvr(18,1)" onmouseout="hvr(18)">United States</a>
+<ul><li><a href="https://time.is/Alabama" class="s5 bold">Alabama</a></li>
+<li><a href="https://time.is/Arkansas" class="s6">Arkansas</a></li>
+<li><a href="https://time.is/Austin" class="s13">Austin</a></li>
+<li><a href="https://time.is/Chicago" class="s16">Chicago</a></li>
+<li><a href="https://time.is/Dallas" class="s13">Dallas</a></li>
+<li><a href="https://time.is/Fort_Worth" class="s12">Fort Worth</a></li>
+<li><a href="https://time.is/Houston" class="s13">Houston</a></li>
+<li><a href="https://time.is/Illinois" class="s3 bold">Illinois</a></li>
+<li><a href="https://time.is/Iowa" class="s5 bold">Iowa</a></li>
+<li><a href="https://time.is/Kansas" class="s6 multizone">Kansas</a></li>
+<li><a href="https://time.is/Kansas_City" class="s16">Kansas City</a></li>
+<li><a href="https://time.is/Louisiana" class="s5 bold">Louisiana</a></li>
+<li><a href="https://time.is/Memphis" class="s12">Memphis</a></li>
+<li><a href="https://time.is/Milwaukee" class="s13">Milwaukee</a></li>
+<li><a href="https://time.is/Minneapolis" class="s15">Minneapolis</a></li>
+<li><a href="https://time.is/Minnesota" class="s4 bold">Minnesota</a></li>
+<li><a href="https://time.is/Mississippi" class="s6 bold">Mississippi</a></li>
+<li><a href="https://time.is/Missouri" class="s4 bold">Missouri</a></li>
+<li><a href="https://time.is/Nashville" class="s14">Nashville</a></li>
+<li><a href="https://time.is/Nebraska" class="s6 multizone">Nebraska</a></li>
+<li><a href="https://time.is/North_Dakota" class="s7 multizone">North Dakota</a></li>
+<li><a href="https://time.is/Oklahoma" class="s5 bold">Oklahoma</a></li>
+<li><a href="https://time.is/Oklahoma_City" class="s14">Oklahoma City</a></li>
+<li><a href="https://time.is/Omaha" class="s16">Omaha</a></li>
+<li><a href="https://time.is/San_Antonio" class="s14">San Antonio</a></li>
+<li><a href="https://time.is/South_Dakota" class="s7 multizone">South Dakota</a></li>
+<li><a href="https://time.is/Tennessee" class="s4 multizone bold">Tennessee</a></li>
+<li><a href="https://time.is/Texas" class="s3 multizone bold">Texas</a></li>
+<li><a href="https://time.is/Tulsa" class="s15">Tulsa</a></li>
+<li><a href="https://time.is/Wisconsin" class="s4 bold">Wisconsin</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC-5</h1><div class="cloud scloud w90"><ul><li id="c40"><a href="https://time.is/Bahamas" class="s1 country bold" onmouseover="hvr(40,1)" onmouseout="hvr(40)">Bahamas</a>
+<ul><li><a href="https://time.is/Nassau" class="s10">Nassau</a></li>
+</ul></li>
+<li id="c29"><a href="https://time.is/Brazil" class="s2 country multizone bold" onmouseover="hvr(29,1)" onmouseout="hvr(29)">Brazil</a>
+<ul><li><a href="https://time.is/Acre" class="s7">Acre</a></li>
+<li><a href="https://time.is/Rio_Branco" class="s15">Rio Branco</a></li>
+</ul></li>
+<li id="c32"><a href="https://time.is/Canada" class="s3 country multizone bold" onmouseover="hvr(32,1)" onmouseout="hvr(32)">Canada</a>
+<ul><li><a href="https://time.is/Montreal" class="s8">Montreal</a></li>
+<li><a href="https://time.is/Ontario" class="s7">Ontario</a></li>
+<li><a href="https://time.is/Ottawa" class="s9">Ottawa</a></li>
+<li><a href="https://time.is/Quebec,_Canada" class="s8">Quebec</a></li>
+<li><a href="https://time.is/Toronto" class="s8">Toronto</a></li>
+</ul></li>
+<li id="c41"><a href="https://time.is/Cayman_Islands" class="s1 country bold" onmouseover="hvr(41,1)" onmouseout="hvr(41)">Cayman Islands</a>
+<ul><li><a href="https://time.is/George_Town" class="s11">George Town</a></li>
+</ul></li>
+<li id="c34"><a href="https://time.is/Chile" class="s2 country multizone bold" onmouseover="hvr(34,1)" onmouseout="hvr(34)">Chile</a>
+</li>
+<li id="c31"><a href="https://time.is/Colombia" class="s2 country bold" onmouseover="hvr(31,1)" onmouseout="hvr(31)">Colombia</a>
+<ul><li><a href="https://time.is/Barranquilla" class="s9">Barranquilla</a></li>
+<li><a href="https://time.is/Bogot%C3%A1" class="s12">Bogotá</a></li>
+<li><a href="https://time.is/Cali" class="s9">Cali</a></li>
+<li><a href="https://time.is/Cartagena" class="s9">Cartagena</a></li>
+<li><a href="https://time.is/Medell%C3%ADn" class="s9">Medellín</a></li>
+</ul></li>
+<li id="c36"><a href="https://time.is/Cuba" class="s1 country bold" onmouseover="hvr(36,1)" onmouseout="hvr(36)">Cuba</a>
+<ul><li><a href="https://time.is/Havana" class="s11">Havana</a></li>
+<li><a href="https://time.is/Santiago_de_Cuba" class="s12">Santiago de Cuba</a></li>
+</ul></li>
+<li id="c35"><a href="https://time.is/Ecuador" class="s2 country multizone bold" onmouseover="hvr(35,1)" onmouseout="hvr(35)">Ecuador</a>
+<ul><li><a href="https://time.is/Guayaquil" class="s11">Guayaquil</a></li>
+<li><a href="https://time.is/Quito" class="s10">Quito</a></li>
+</ul></li>
+<li id="c37"><a href="https://time.is/Haiti" class="s1 country bold" onmouseover="hvr(37,1)" onmouseout="hvr(37)">Haiti</a>
+<ul><li><a href="https://time.is/Port-au-Prince" class="s11">Port-au-Prince</a></li>
+</ul></li>
+<li id="c39"><a href="https://time.is/Jamaica" class="s1 country bold" onmouseover="hvr(39,1)" onmouseout="hvr(39)">Jamaica</a>
+<ul><li><a href="https://time.is/Kingston" class="s10">Kingston</a></li>
+<li><a href="https://time.is/Spanish_Town" class="s10">Spanish Town</a></li>
+</ul></li>
+<li id="c30"><a href="https://time.is/Mexico" class="s2 country multizone bold" onmouseover="hvr(30,1)" onmouseout="hvr(30)">Mexico</a>
+<ul><li><a href="https://time.is/Canc%C3%BAn" class="s12">Cancún</a></li>
+</ul></li>
+<li id="c38"><a href="https://time.is/Panama" class="s1 country bold" onmouseover="hvr(38,1)" onmouseout="hvr(38)">Panama</a>
+<ul><li><a href="https://time.is/Panama_City" class="s11">Panama City</a></li>
+</ul></li>
+<li id="c33"><a href="https://time.is/Peru" class="s3 country bold" onmouseover="hvr(33,1)" onmouseout="hvr(33)">Peru</a>
+<ul><li><a href="https://time.is/Arequipa" class="s8">Arequipa</a></li>
+<li><a href="https://time.is/Lima" class="s8">Lima</a></li>
+<li><a href="https://time.is/Trujillo" class="s10">Trujillo</a></li>
+</ul></li>
+<li id="c28"><a href="https://time.is/United_States" class="s3 country multizone bold" onmouseover="hvr(28,1)" onmouseout="hvr(28)">United States</a>
+<ul><li><a href="https://time.is/Atlanta" class="s16">Atlanta</a></li>
+<li><a href="https://time.is/Baltimore" class="s13">Baltimore</a></li>
+<li><a href="https://time.is/Boston" class="s13">Boston</a></li>
+<li><a href="https://time.is/Charlotte" class="s12">Charlotte</a></li>
+<li><a href="https://time.is/Cincinnati" class="s15">Cincinnati</a></li>
+<li><a href="https://time.is/Cleveland,_Ohio" class="s15">Cleveland</a></li>
+<li><a href="https://time.is/Columbus" class="s13">Columbus</a></li>
+<li><a href="https://time.is/Connecticut" class="s6">Connecticut</a></li>
+<li><a href="https://time.is/Delaware" class="s7">Delaware</a></li>
+<li><a href="https://time.is/Detroit" class="s12">Detroit</a></li>
+<li><a href="https://time.is/Florida" class="s3 multizone bold">Florida</a></li>
+<li><a href="https://time.is/Georgia,_United_States" class="s4 bold">Georgia</a></li>
+<li><a href="https://time.is/Indiana" class="s3 multizone bold">Indiana</a></li>
+<li><a href="https://time.is/Indianapolis" class="s14">Indianapolis</a></li>
+<li><a href="https://time.is/Jacksonville" class="s13">Jacksonville</a></li>
+<li><a href="https://time.is/Kentucky" class="s6 multizone bold">Kentucky</a></li>
+<li><a href="https://time.is/Lexington-Fayette" class="s15">Lexington-Fayette</a></li>
+<li><a href="https://time.is/Maine" class="s6">Maine</a></li>
+<li><a href="https://time.is/Maryland" class="s5 bold">Maryland</a></li>
+<li><a href="https://time.is/Massachusetts" class="s5 bold">Massachusetts</a></li>
+<li><a href="https://time.is/Miami" class="s16">Miami</a></li>
+<li><a href="https://time.is/Michigan" class="s4 multizone bold">Michigan</a></li>
+<li><a href="https://time.is/New_Hampshire" class="s6">New Hampshire</a></li>
+<li><a href="https://time.is/New_Jersey" class="s4 bold">New Jersey</a></li>
+<li><a href="https://time.is/New_York" class="s16">New York</a></li>
+<li><a href="https://time.is/North_Carolina" class="s5 bold">North Carolina</a></li>
+<li><a href="https://time.is/Ohio" class="s4 bold">Ohio</a></li>
+<li><a href="https://time.is/Pennsylvania" class="s4 bold">Pennsylvania</a></li>
+<li><a href="https://time.is/Philadelphia" class="s14">Philadelphia</a></li>
+<li><a href="https://time.is/Pittsburgh" class="s14">Pittsburgh</a></li>
+<li><a href="https://time.is/Raleigh" class="s16">Raleigh</a></li>
+<li><a href="https://time.is/Rhode_Island" class="s7">Rhode Island</a></li>
+<li><a href="https://time.is/South_Carolina" class="s5 bold">South Carolina</a></li>
+<li><a href="https://time.is/Staten_Island" class="s14">Staten Island</a></li>
+<li><a href="https://time.is/Tampa" class="s15">Tampa</a></li>
+<li><a href="https://time.is/Vermont" class="s7">Vermont</a></li>
+<li><a href="https://time.is/Virginia" class="s5 bold">Virginia</a></li>
+<li><a href="https://time.is/Virginia_Beach" class="s14">Virginia Beach</a></li>
+<li><a href="https://time.is/Washington,_D.C." class="s13">Washington, D.C.</a></li>
+<li><a href="https://time.is/West_Virginia" class="s6">West Virginia</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC-4</h1><div class="cloud scloud w90"><ul><li id="c68"><a href="https://time.is/Anguilla" class="s3 country bold" onmouseover="hvr(68,1)" onmouseout="hvr(68)">Anguilla</a>
+<ul><li><a href="https://time.is/The_Valley" class="s11">The Valley</a></li>
+</ul></li>
+<li id="c58"><a href="https://time.is/Antigua_and_Barbuda" class="s1 country bold" onmouseover="hvr(58,1)" onmouseout="hvr(58)">Antigua and Barbuda</a>
+<ul><li><a href="https://time.is/St._John&#39;s" class="s9">St. John's</a></li>
+</ul></li>
+<li id="c60"><a href="https://time.is/Aruba" class="s1 country bold" onmouseover="hvr(60,1)" onmouseout="hvr(60)">Aruba</a>
+<ul><li><a href="https://time.is/Oranjestad" class="s9">Oranjestad</a></li>
+</ul></li>
+<li id="c52"><a href="https://time.is/Barbados" class="s6 country" onmouseover="hvr(52,1)" onmouseout="hvr(52)">Barbados</a>
+<ul><li><a href="https://time.is/Bridgetown" class="s12">Bridgetown</a></li>
+</ul></li>
+<li id="c61"><a href="https://time.is/Bermuda" class="s1 country bold" onmouseover="hvr(61,1)" onmouseout="hvr(61)">Bermuda</a>
+<ul><li><a href="https://time.is/Hamilton,_Bermuda" class="s9">Hamilton</a></li>
+</ul></li>
+<li id="c45"><a href="https://time.is/Bolivia" class="s4 country bold" onmouseover="hvr(45,1)" onmouseout="hvr(45)">Bolivia</a>
+<ul><li><a href="https://time.is/La_Paz" class="s13">La Paz</a></li>
+<li><a href="https://time.is/Santa_Cruz,_Santa_Cruz" class="s13">Santa Cruz</a></li>
+</ul></li>
+<li id="c67"><a href="https://time.is/Bonaire,_Sint_Eustatius_and_Saba" class="s3 country bold" onmouseover="hvr(67,1)" onmouseout="hvr(67)">Bonaire, Sint Eustatius and Saba</a>
+<ul><li><a href="https://time.is/Kralendijk" class="s11">Kralendijk</a></li>
+</ul></li>
+<li id="c42"><a href="https://time.is/Brazil" class="s7 country multizone" onmouseover="hvr(42,1)" onmouseout="hvr(42)">Brazil</a>
+<ul><li><a href="https://time.is/Amazonas,_Brazil" class="s7">Amazonas</a></li>
+<li><a href="https://time.is/Manaus" class="s16">Manaus</a></li>
+<li><a href="https://time.is/Par%C3%A1,_Brazil" class="s7">Pará</a></li>
+<li><a href="https://time.is/Porto_Velho" class="s14">Porto Velho</a></li>
+<li><a href="https://time.is/Rond%C3%B4nia" class="s7">Rondônia</a></li>
+<li><a href="https://time.is/Roraima" class="s8">Roraima</a></li>
+</ul></li>
+<li id="c65"><a href="https://time.is/British_Virgin_Islands" class="s2 country bold" onmouseover="hvr(65,1)" onmouseout="hvr(65)">British Virgin Islands</a>
+<ul><li><a href="https://time.is/Road_Town" class="s12">Road Town</a></li>
+</ul></li>
+<li id="c43"><a href="https://time.is/Canada" class="s5 country multizone bold" onmouseover="hvr(43,1)" onmouseout="hvr(43)">Canada</a>
+<ul><li><a href="https://time.is/Halifax" class="s14">Halifax</a></li>
+<li><a href="https://time.is/New_Brunswick" class="s8">New Brunswick</a></li>
+<li><a href="https://time.is/Nova_Scotia" class="s8">Nova Scotia</a></li>
+<li><a href="https://time.is/Prince_Edward_Island" class="s8">Prince Edward Island</a></li>
+<li><a href="https://time.is/Saint_John,_Canada" class="s14">Saint John</a></li>
+</ul></li>
+<li id="c54"><a href="https://time.is/Cura%C3%A7ao" class="s6 country bold" onmouseover="hvr(54,1)" onmouseout="hvr(54)">Curaçao</a>
+<ul><li><a href="https://time.is/Willemstad" class="s9">Willemstad</a></li>
+</ul></li>
+<li id="c59"><a href="https://time.is/Dominica" class="s2 country bold" onmouseover="hvr(59,1)" onmouseout="hvr(59)">Dominica</a>
+<ul><li><a href="https://time.is/Roseau" class="s8">Roseau</a></li>
+</ul></li>
+<li id="c46"><a href="https://time.is/Dominican_Republic" class="s4 country bold" onmouseover="hvr(46,1)" onmouseout="hvr(46)">Dominican Republic</a>
+<ul><li><a href="https://time.is/Santiago_de_los_Caballeros" class="s15">Santiago de los Caballeros</a></li>
+<li><a href="https://time.is/Santo_Domingo,_Dominican_Republic" class="s14">Santo Domingo</a></li>
+</ul></li>
+<li id="c62"><a href="https://time.is/Greenland" class="s1 country multizone bold" onmouseover="hvr(62,1)" onmouseout="hvr(62)">Greenland</a>
+<ul><li><a href="https://time.is/Pitugfik" class="s10">Pitugfik</a></li>
+</ul></li>
+<li id="c56"><a href="https://time.is/Grenada" class="s4 country bold" onmouseover="hvr(56,1)" onmouseout="hvr(56)">Grenada</a>
+<ul><li><a href="https://time.is/St._George&#39;s" class="s10">St. George's</a></li>
+</ul></li>
+<li id="c50"><a href="https://time.is/Guadeloupe" class="s5 country bold" onmouseover="hvr(50,1)" onmouseout="hvr(50)">Guadeloupe</a>
+<ul><li><a href="https://time.is/Basse-Terre" class="s15">Basse-Terre</a></li>
+</ul></li>
+<li id="c49"><a href="https://time.is/Guyana" class="s5 country bold" onmouseover="hvr(49,1)" onmouseout="hvr(49)">Guyana</a>
+<ul><li><a href="https://time.is/Georgetown" class="s15">Georgetown</a></li>
+</ul></li>
+<li id="c51"><a href="https://time.is/Martinique" class="s6 country" onmouseover="hvr(51,1)" onmouseout="hvr(51)">Martinique</a>
+<ul><li><a href="https://time.is/Fort-de-France" class="s15">Fort-de-France</a></li>
+</ul></li>
+<li id="c69"><a href="https://time.is/Montserrat" class="s2 country bold" onmouseover="hvr(69,1)" onmouseout="hvr(69)">Montserrat</a>
+<ul><li><a href="https://time.is/Plymouth" class="s11">Plymouth</a></li>
+</ul></li>
+<li id="c47"><a href="https://time.is/Puerto_Rico" class="s4 country bold" onmouseover="hvr(47,1)" onmouseout="hvr(47)">Puerto Rico</a>
+<ul><li><a href="https://time.is/Carolina" class="s16">Carolina</a></li>
+<li><a href="https://time.is/San_Juan" class="s16">San Juan</a></li>
+</ul></li>
+<li id="c63"><a href="https://time.is/Saint_Kitts_and_Nevis" class="s1 country bold" onmouseover="hvr(63,1)" onmouseout="hvr(63)">Saint Kitts and Nevis</a>
+<ul><li><a href="https://time.is/Basseterre" class="s10">Basseterre</a></li>
+</ul></li>
+<li id="c53"><a href="https://time.is/Saint_Lucia" class="s6 country" onmouseover="hvr(53,1)" onmouseout="hvr(53)">Saint Lucia</a>
+<ul><li><a href="https://time.is/Castries" class="s12">Castries</a></li>
+</ul></li>
+<li id="c64"><a href="https://time.is/Saint_Martin" class="s2 country bold" onmouseover="hvr(64,1)" onmouseout="hvr(64)">Saint Martin</a>
+<ul><li><a href="https://time.is/Marigot" class="s12">Marigot</a></li>
+</ul></li>
+<li id="c57"><a href="https://time.is/Saint_Vincent_and_the_Grenadines" class="s3 country bold" onmouseover="hvr(57,1)" onmouseout="hvr(57)">Saint Vincent and the Grenadines</a>
+<ul><li><a href="https://time.is/Kingstown" class="s9">Kingstown</a></li>
+</ul></li>
+<li id="c70"><a href="https://time.is/Saint_Barth%C3%A9lemy" class="s2 country bold" onmouseover="hvr(70,1)" onmouseout="hvr(70)">Saint-Barthélemy</a>
+<ul><li><a href="https://time.is/Gustavia" class="s11">Gustavia</a></li>
+</ul></li>
+<li id="c48"><a href="https://time.is/Trinidad_and_Tobago" class="s4 country bold" onmouseover="hvr(48,1)" onmouseout="hvr(48)">Trinidad and Tobago</a>
+<ul><li><a href="https://time.is/Chaguanas" class="s15">Chaguanas</a></li>
+<li><a href="https://time.is/Port_of_Spain" class="s16">Port of Spain</a></li>
+</ul></li>
+<li id="c66"><a href="https://time.is/Turks_and_Caicos_Islands" class="s3 country bold" onmouseover="hvr(66,1)" onmouseout="hvr(66)">Turks and Caicos Islands</a>
+<ul><li><a href="https://time.is/Cockburn_Town" class="s11">Cockburn Town</a></li>
+</ul></li>
+<li id="c55"><a href="https://time.is/U.S._Virgin_Islands" class="s6 country" onmouseover="hvr(55,1)" onmouseout="hvr(55)">U.S. Virgin Islands</a>
+<ul><li><a href="https://time.is/Charlotte_Amalie" class="s10">Charlotte Amalie</a></li>
+</ul></li>
+<li id="c44"><a href="https://time.is/Venezuela" class="s5 country bold" onmouseover="hvr(44,1)" onmouseout="hvr(44)">Venezuela</a>
+<ul><li><a href="https://time.is/Caracas" class="s13">Caracas</a></li>
+<li><a href="https://time.is/Maracaibo" class="s13">Maracaibo</a></li>
+<li><a href="https://time.is/Maracay" class="s13">Maracay</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC-3:30</h1><div class="cloud scloud w90"><ul><li id="c71"><a href="https://time.is/Canada" class="s1 country multizone bold" onmouseover="hvr(71,1)" onmouseout="hvr(71)">Canada</a>
+<ul><li><a href="https://time.is/Newfoundland_and_Labrador" class="s2 multizone">Newfoundland and Labrador</a></li>
+<li><a href="https://time.is/St_Johns" class="s3">St Johns</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC-3</h1><div class="cloud scloud w90"><ul><li id="c73"><a href="https://time.is/Argentina" class="s3 country bold" onmouseover="hvr(73,1)" onmouseout="hvr(73)">Argentina</a>
+<ul><li><a href="https://time.is/Buenos_Aires" class="s15">Buenos Aires</a></li>
+<li><a href="https://time.is/C%C3%B3rdoba" class="s16">Córdoba</a></li>
+<li><a href="https://time.is/Rosario" class="s15">Rosario</a></li>
+</ul></li>
+<li id="c72"><a href="https://time.is/Brazil" class="s4 country multizone bold" onmouseover="hvr(72,1)" onmouseout="hvr(72)">Brazil</a>
+<ul><li><a href="https://time.is/Alagoas" class="s7">Alagoas</a></li>
+<li><a href="https://time.is/Amap%C3%A1" class="s9">Amapá</a></li>
+<li><a href="https://time.is/Bahia,_Brazil" class="s4 bold">Bahia</a></li>
+<li><a href="https://time.is/Bel%C3%A9m" class="s13">Belém</a></li>
+<li><a href="https://time.is/Cear%C3%A1,_Brazil" class="s5 bold">Ceará</a></li>
+<li><a href="https://time.is/Fortaleza" class="s14">Fortaleza</a></li>
+<li><a href="https://time.is/Goi%C3%A1s" class="s6">Goiás</a></li>
+<li><a href="https://time.is/Macei%C3%B3" class="s14">Maceió</a></li>
+<li><a href="https://time.is/Maranh%C3%A3o,_Brazil" class="s5 bold">Maranhão</a></li>
+<li><a href="https://time.is/Mato_Grosso" class="s8">Mato Grosso</a></li>
+<li><a href="https://time.is/Mato_Grosso_do_Sul" class="s8">Mato Grosso do Sul</a></li>
+<li><a href="https://time.is/Para%C3%ADba,_Brazil" class="s6">Paraíba</a></li>
+<li><a href="https://time.is/Pernambuco,_Brazil" class="s5 bold">Pernambuco</a></li>
+<li><a href="https://time.is/Piau%C3%AD" class="s7">Piauí</a></li>
+<li><a href="https://time.is/Recife" class="s14">Recife</a></li>
+<li><a href="https://time.is/Rio_Grande_do_Norte" class="s6">Rio Grande do Norte</a></li>
+<li><a href="https://time.is/Salvador" class="s16">Salvador</a></li>
+<li><a href="https://time.is/Sergipe" class="s8">Sergipe</a></li>
+<li><a href="https://time.is/Tocantins" class="s9">Tocantins</a></li>
+</ul></li>
+<li id="c74"><a href="https://time.is/Chile" class="s3 country multizone bold" onmouseover="hvr(74,1)" onmouseout="hvr(74)">Chile</a>
+<ul><li><a href="https://time.is/Puente_Alto" class="s13">Puente Alto</a></li>
+<li><a href="https://time.is/Santiago" class="s15">Santiago</a></li>
+</ul></li>
+<li id="c81"><a href="https://time.is/Falkland_Islands" class="s2 country bold" onmouseover="hvr(81,1)" onmouseout="hvr(81)">Falkland Islands</a>
+<ul><li><a href="https://time.is/Stanley" class="s11">Stanley</a></li>
+</ul></li>
+<li id="c78"><a href="https://time.is/French_Guiana" class="s1 country bold" onmouseover="hvr(78,1)" onmouseout="hvr(78)">French Guiana</a>
+<ul><li><a href="https://time.is/Cayenne" class="s11">Cayenne</a></li>
+</ul></li>
+<li id="c79"><a href="https://time.is/Greenland" class="s1 country multizone bold" onmouseover="hvr(79,1)" onmouseout="hvr(79)">Greenland</a>
+<ul><li><a href="https://time.is/Nuuk" class="s12">Nuuk</a></li>
+</ul></li>
+<li id="c75"><a href="https://time.is/Paraguay" class="s3 country bold" onmouseover="hvr(75,1)" onmouseout="hvr(75)">Paraguay</a>
+<ul><li><a href="https://time.is/Asunci%C3%B3n" class="s12">Asunción</a></li>
+<li><a href="https://time.is/Ciudad_del_Este" class="s10">Ciudad del Este</a></li>
+</ul></li>
+<li id="c80"><a href="https://time.is/Saint_Pierre_and_Miquelon" class="s1 country bold" onmouseover="hvr(80,1)" onmouseout="hvr(80)">Saint Pierre and Miquelon</a>
+<ul><li><a href="https://time.is/Saint-Pierre" class="s12">Saint-Pierre</a></li>
+</ul></li>
+<li id="c77"><a href="https://time.is/Suriname" class="s2 country bold" onmouseover="hvr(77,1)" onmouseout="hvr(77)">Suriname</a>
+<ul><li><a href="https://time.is/Paramaribo" class="s11">Paramaribo</a></li>
+</ul></li>
+<li id="c76"><a href="https://time.is/Uruguay" class="s2 country bold" onmouseover="hvr(76,1)" onmouseout="hvr(76)">Uruguay</a>
+<ul><li><a href="https://time.is/Montevideo" class="s10">Montevideo</a></li>
+<li><a href="https://time.is/Salto,_Salto" class="s9">Salto</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC-2</h1><div class="cloud scloud w90"><ul><li id="c82"><a href="https://time.is/Brazil" class="s1 country multizone bold" onmouseover="hvr(82,1)" onmouseout="hvr(82)">Brazil</a>
+<ul><li><a href="https://time.is/Belo_Horizonte" class="s15">Belo Horizonte</a></li>
+<li><a href="https://time.is/Bras%C3%ADlia" class="s14">Brasília</a></li>
+<li><a href="https://time.is/Campinas" class="s9">Campinas</a></li>
+<li><a href="https://time.is/Curitiba" class="s12">Curitiba</a></li>
+<li><a href="https://time.is/Esp%C3%ADrito_Santo" class="s6">Espírito Santo</a></li>
+<li><a href="https://time.is/Federal_District,_Brazil" class="s7">Federal District</a></li>
+<li><a href="https://time.is/Goi%C3%A2nia" class="s8">Goiânia</a></li>
+<li><a href="https://time.is/Guarulhos" class="s8">Guarulhos</a></li>
+<li><a href="https://time.is/Minas_Gerais" class="s2 bold">Minas Gerais</a></li>
+<li><a href="https://time.is/Nova_Igua%C3%A7u" class="s10">Nova Iguaçu</a></li>
+<li><a href="https://time.is/Paran%C3%A1" class="s4 bold">Paraná</a></li>
+<li><a href="https://time.is/Porto_Alegre" class="s11">Porto Alegre</a></li>
+<li><a href="https://time.is/Rio_Grande_do_Sul" class="s3 bold">Rio Grande do Sul</a></li>
+<li><a href="https://time.is/Rio_de_Janeiro" class="s16">Rio de Janeiro</a></li>
+<li><a href="https://time.is/Santa_Catarina" class="s5 bold">Santa Catarina</a></li>
+<li><a href="https://time.is/S%C3%A3o_Paulo" class="s13">São Paulo</a></li>
+</ul></li>
+<li id="c83"><a href="https://time.is/South_Georgia_and_South_Sandwich_Islands" class="s1 country bold" onmouseover="hvr(83,1)" onmouseout="hvr(83)">South Georgia and South Sandwich Islands</a>
+</li>
+</ul></div></div><div class="section odd"><h1>UTC-1</h1><div class="cloud scloud w90"><ul><li id="c84"><a href="https://time.is/Azores" class="s3 country" onmouseover="hvr(84,1)" onmouseout="hvr(84)">Azores</a>
+<ul><li><a href="https://time.is/Ponta_Delgada" class="s6">Ponta Delgada</a></li>
+</ul></li>
+<li id="c85"><a href="https://time.is/Cape_Verde" class="s2 country bold" onmouseover="hvr(85,1)" onmouseout="hvr(85)">Cape Verde</a>
+<ul><li><a href="https://time.is/Praia" class="s5">Praia</a></li>
+</ul></li>
+<li id="c86"><a href="https://time.is/Greenland" class="s1 country multizone bold" onmouseover="hvr(86,1)" onmouseout="hvr(86)">Greenland</a>
+<ul><li><a href="https://time.is/Ittoqqortoormiit" class="s4">Ittoqqortoormiit</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+0</h1><div class="cloud scloud w90"><ul><li id="c92"><a href="https://time.is/Burkina_Faso" class="s4 country bold" onmouseover="hvr(92,1)" onmouseout="hvr(92)">Burkina Faso</a>
+<ul><li><a href="https://time.is/Bobo-Dioulasso" class="s15">Bobo-Dioulasso</a></li>
+<li><a href="https://time.is/Ouagadougou" class="s14">Ouagadougou</a></li>
+</ul></li>
+<li id="c88"><a href="https://time.is/Canary_Islands" class="s5 country bold" onmouseover="hvr(88,1)" onmouseout="hvr(88)">Canary Islands</a>
+<ul><li><a href="https://time.is/Las_Palmas" class="s14">Las Palmas</a></li>
+</ul></li>
+<li id="c111"><a href="https://time.is/Faroe_Islands" class="s2 country bold" onmouseover="hvr(111,1)" onmouseout="hvr(111)">Faroe Islands</a>
+<ul><li><a href="https://time.is/T%C3%B3rshavn" class="s10">Tórshavn</a></li>
+</ul></li>
+<li id="c102"><a href="https://time.is/Gambia" class="s1 country bold" onmouseover="hvr(102,1)" onmouseout="hvr(102)">Gambia</a>
+<ul><li><a href="https://time.is/Banjul" class="s10">Banjul</a></li>
+</ul></li>
+<li id="c90"><a href="https://time.is/Ghana" class="s4 country bold" onmouseover="hvr(90,1)" onmouseout="hvr(90)">Ghana</a>
+<ul><li><a href="https://time.is/Accra" class="s16">Accra</a></li>
+<li><a href="https://time.is/Kumasi" class="s16">Kumasi</a></li>
+</ul></li>
+<li id="c110"><a href="https://time.is/Greenland" class="s3 country multizone bold" onmouseover="hvr(110,1)" onmouseout="hvr(110)">Greenland</a>
+</li>
+<li id="c109"><a href="https://time.is/Guernsey" class="s3 country bold" onmouseover="hvr(109,1)" onmouseout="hvr(109)">Guernsey</a>
+</li>
+<li id="c96"><a href="https://time.is/Guinea" class="s6 country" onmouseover="hvr(96,1)" onmouseout="hvr(96)">Guinea</a>
+<ul><li><a href="https://time.is/Conakry" class="s8">Conakry</a></li>
+<li><a href="https://time.is/Nz%C3%A9r%C3%A9kor%C3%A9" class="s7">Nzérékoré</a></li>
+</ul></li>
+<li id="c103"><a href="https://time.is/Guinea-Bissau" class="s1 country bold" onmouseover="hvr(103,1)" onmouseout="hvr(103)">Guinea-Bissau</a>
+<ul><li><a href="https://time.is/Bafat%C3%A1,_Bafat%C3%A1" class="s9">Bafatá</a></li>
+<li><a href="https://time.is/Bissau" class="s10">Bissau</a></li>
+</ul></li>
+<li id="c104"><a href="https://time.is/Iceland" class="s1 country bold" onmouseover="hvr(104,1)" onmouseout="hvr(104)">Iceland</a>
+<ul><li><a href="https://time.is/Reykjavik" class="s9">Reykjavik</a></li>
+</ul></li>
+<li id="c99"><a href="https://time.is/Ireland" class="s4 country bold" onmouseover="hvr(99,1)" onmouseout="hvr(99)">Ireland</a>
+<ul><li><a href="https://time.is/Cork" class="s9">Cork</a></li>
+<li><a href="https://time.is/Dublin" class="s9">Dublin</a></li>
+</ul></li>
+<li id="c108"><a href="https://time.is/Isle_of_Man" class="s3 country bold" onmouseover="hvr(108,1)" onmouseout="hvr(108)">Isle of Man</a>
+</li>
+<li id="c91"><a href="https://time.is/Ivory_Coast" class="s4 country bold" onmouseover="hvr(91,1)" onmouseout="hvr(91)">Ivory Coast</a>
+<ul><li><a href="https://time.is/Abidjan" class="s15">Abidjan</a></li>
+<li><a href="https://time.is/Bouak%C3%A9" class="s14">Bouaké</a></li>
+<li><a href="https://time.is/Yamoussoukro" class="s15">Yamoussoukro</a></li>
+</ul></li>
+<li id="c107"><a href="https://time.is/Jersey" class="s2 country bold" onmouseover="hvr(107,1)" onmouseout="hvr(107)">Jersey</a>
+</li>
+<li id="c100"><a href="https://time.is/Liberia" class="s3 country bold" onmouseover="hvr(100,1)" onmouseout="hvr(100)">Liberia</a>
+<ul><li><a href="https://time.is/Monrovia" class="s10">Monrovia</a></li>
+</ul></li>
+<li id="c93"><a href="https://time.is/Mali" class="s5 country bold" onmouseover="hvr(93,1)" onmouseout="hvr(93)">Mali</a>
+<ul><li><a href="https://time.is/Bamako" class="s15">Bamako</a></li>
+<li><a href="https://time.is/Sikasso,_Sikasso" class="s11">Sikasso</a></li>
+</ul></li>
+<li id="c101"><a href="https://time.is/Mauritania" class="s1 country bold" onmouseover="hvr(101,1)" onmouseout="hvr(101)">Mauritania</a>
+<ul><li><a href="https://time.is/Nouadhibou" class="s11">Nouadhibou</a></li>
+<li><a href="https://time.is/Nouakchott" class="s11">Nouakchott</a></li>
+</ul></li>
+<li id="c89"><a href="https://time.is/Morocco" class="s4 country bold" onmouseover="hvr(89,1)" onmouseout="hvr(89)">Morocco</a>
+<ul><li><a href="https://time.is/Casablanca" class="s16">Casablanca</a></li>
+<li><a href="https://time.is/Rabat" class="s14">Rabat</a></li>
+</ul></li>
+<li id="c95"><a href="https://time.is/Portugal" class="s6 country multizone" onmouseover="hvr(95,1)" onmouseout="hvr(95)">Portugal</a>
+<ul><li><a href="https://time.is/Lisbon" class="s8">Lisbon</a></li>
+<li><a href="https://time.is/Porto" class="s8">Porto</a></li>
+</ul></li>
+<li id="c112"><a href="https://time.is/Saint_Helena" class="s2 country bold" onmouseover="hvr(112,1)" onmouseout="hvr(112)">Saint Helena</a>
+<ul><li><a href="https://time.is/Jamestown" class="s10">Jamestown</a></li>
+</ul></li>
+<li id="c94"><a href="https://time.is/Senegal" class="s5 country bold" onmouseover="hvr(94,1)" onmouseout="hvr(94)">Senegal</a>
+<ul><li><a href="https://time.is/Dakar" class="s11">Dakar</a></li>
+<li><a href="https://time.is/Touba" class="s8">Touba</a></li>
+</ul></li>
+<li id="c98"><a href="https://time.is/Sierra_Leone" class="s5 country bold" onmouseover="hvr(98,1)" onmouseout="hvr(98)">Sierra Leone</a>
+<ul><li><a href="https://time.is/Bo" class="s7">Bo</a></li>
+<li><a href="https://time.is/Freetown" class="s7">Freetown</a></li>
+</ul></li>
+<li id="c106"><a href="https://time.is/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe" class="s2 country bold" onmouseover="hvr(106,1)" onmouseout="hvr(106)">São Tomé and Príncipe</a>
+</li>
+<li id="c97"><a href="https://time.is/Togo" class="s6 country bold" onmouseover="hvr(97,1)" onmouseout="hvr(97)">Togo</a>
+<ul><li><a href="https://time.is/Lom%C3%A9" class="s7">Lomé</a></li>
+<li><a href="https://time.is/Sokod%C3%A9" class="s7">Sokodé</a></li>
+</ul></li>
+<li id="c87"><a href="https://time.is/United_Kingdom" class="s6 country multizone" onmouseover="hvr(87,1)" onmouseout="hvr(87)">United Kingdom</a>
+<ul><li><a href="https://time.is/Birmingham,_United_Kingdom" class="s13">Birmingham</a></li>
+<li><a href="https://time.is/Bristol" class="s12">Bristol</a></li>
+<li><a href="https://time.is/Edinburgh" class="s12">Edinburgh</a></li>
+<li><a href="https://time.is/Glasgow" class="s13">Glasgow</a></li>
+<li><a href="https://time.is/Leeds" class="s13">Leeds</a></li>
+<li><a href="https://time.is/Leicester" class="s12">Leicester</a></li>
+<li><a href="https://time.is/Liverpool" class="s13">Liverpool</a></li>
+<li><a href="https://time.is/London" class="s16">London</a></li>
+<li><a href="https://time.is/Manchester" class="s12">Manchester</a></li>
+<li><a href="https://time.is/Sheffield" class="s13">Sheffield</a></li>
+</ul></li>
+<li id="c105"><a href="https://time.is/Western_Sahara" class="s1 country bold" onmouseover="hvr(105,1)" onmouseout="hvr(105)">Western Sahara</a>
+</li>
+</ul></div></div><div class="section odd"><h1>UTC+1</h1><div class="cloud scloud w90"><ul><li id="c142"><a href="https://time.is/Albania" class="s1 country bold" onmouseover="hvr(142,1)" onmouseout="hvr(142)">Albania</a>
+<ul><li><a href="https://time.is/Durr%C3%ABs" class="s10">Durrës</a></li>
+<li><a href="https://time.is/Tirana" class="s10">Tirana</a></li>
+</ul></li>
+<li id="c120"><a href="https://time.is/Algeria" class="s3 country bold" onmouseover="hvr(120,1)" onmouseout="hvr(120)">Algeria</a>
+<ul><li><a href="https://time.is/Algiers" class="s14">Algiers</a></li>
+<li><a href="https://time.is/Boumerdas" class="s14">Boumerdas</a></li>
+<li><a href="https://time.is/Oran" class="s14">Oran</a></li>
+</ul></li>
+<li id="c150"><a href="https://time.is/Andorra" class="s2 country bold" onmouseover="hvr(150,1)" onmouseout="hvr(150)">Andorra</a>
+</li>
+<li id="c124"><a href="https://time.is/Angola" class="s4 country bold" onmouseover="hvr(124,1)" onmouseout="hvr(124)">Angola</a>
+<ul><li><a href="https://time.is/Luanda" class="s11">Luanda</a></li>
+<li><a href="https://time.is/N&#39;dalatando" class="s7">N'dalatando</a></li>
+</ul></li>
+<li id="c132"><a href="https://time.is/Austria" class="s5 country bold" onmouseover="hvr(132,1)" onmouseout="hvr(132)">Austria</a>
+<ul><li><a href="https://time.is/Graz" class="s6">Graz</a></li>
+<li><a href="https://time.is/Vienna" class="s6 bold">Vienna</a></li>
+</ul></li>
+<li id="c128"><a href="https://time.is/Belgium" class="s5 country bold" onmouseover="hvr(128,1)" onmouseout="hvr(128)">Belgium</a>
+<ul><li><a href="https://time.is/Antwerp" class="s8">Antwerp</a></li>
+<li><a href="https://time.is/Brussels" class="s8">Brussels</a></li>
+</ul></li>
+<li id="c131"><a href="https://time.is/Benin" class="s5 country bold" onmouseover="hvr(131,1)" onmouseout="hvr(131)">Benin</a>
+<ul><li><a href="https://time.is/Abomey-Calavi" class="s6">Abomey-Calavi</a></li>
+<li><a href="https://time.is/Porto-Novo" class="s6">Porto-Novo</a></li>
+</ul></li>
+<li id="c139"><a href="https://time.is/Bosnia_and_Herzegovina" class="s1 country bold" onmouseover="hvr(139,1)" onmouseout="hvr(139)">Bosnia and Herzegovina</a>
+<ul><li><a href="https://time.is/Sarajevo" class="s10">Sarajevo</a></li>
+</ul></li>
+<li id="c121"><a href="https://time.is/Cameroon" class="s3 country bold" onmouseover="hvr(121,1)" onmouseout="hvr(121)">Cameroon</a>
+<ul><li><a href="https://time.is/Douala" class="s15">Douala</a></li>
+<li><a href="https://time.is/Yaound%C3%A9" class="s15">Yaoundé</a></li>
+</ul></li>
+<li id="c138"><a href="https://time.is/Central_African_Republic" class="s1 country bold" onmouseover="hvr(138,1)" onmouseout="hvr(138)">Central African Republic</a>
+<ul><li><a href="https://time.is/Bangui" class="s10">Bangui</a></li>
+<li><a href="https://time.is/Bimbo" class="s10">Bimbo</a></li>
+</ul></li>
+<li id="c126"><a href="https://time.is/Chad" class="s5 country bold" onmouseover="hvr(126,1)" onmouseout="hvr(126)">Chad</a>
+<ul><li><a href="https://time.is/Moundou" class="s7">Moundou</a></li>
+<li><a href="https://time.is/N&#39;Djamena" class="s7">N'Djamena</a></li>
+</ul></li>
+<li id="c141"><a href="https://time.is/Congo-Brazzaville" class="s1 country bold" onmouseover="hvr(141,1)" onmouseout="hvr(141)">Congo-Brazzaville</a>
+<ul><li><a href="https://time.is/Brazzaville" class="s11">Brazzaville</a></li>
+<li><a href="https://time.is/Pointe-Noire" class="s11">Pointe-Noire</a></li>
+</ul></li>
+<li id="c115"><a href="https://time.is/Congo-Kinshasa" class="s4 country multizone bold" onmouseover="hvr(115,1)" onmouseout="hvr(115)">Congo-Kinshasa</a>
+<ul><li><a href="https://time.is/Kikwit" class="s12">Kikwit</a></li>
+<li><a href="https://time.is/Kinshasa" class="s12">Kinshasa</a></li>
+</ul></li>
+<li id="c140"><a href="https://time.is/Croatia" class="s1 country bold" onmouseover="hvr(140,1)" onmouseout="hvr(140)">Croatia</a>
+<ul><li><a href="https://time.is/Zagreb" class="s11">Zagreb</a></li>
+</ul></li>
+<li id="c127"><a href="https://time.is/Czechia" class="s5 country bold" onmouseover="hvr(127,1)" onmouseout="hvr(127)">Czechia</a>
+<ul><li><a href="https://time.is/Brno" class="s8">Brno</a></li>
+<li><a href="https://time.is/Prague" class="s8">Prague</a></li>
+</ul></li>
+<li id="c135"><a href="https://time.is/Denmark" class="s3 country multizone bold" onmouseover="hvr(135,1)" onmouseout="hvr(135)">Denmark</a>
+<ul><li><a href="https://time.is/Aarhus" class="s8">Aarhus</a></li>
+<li><a href="https://time.is/Copenhagen" class="s6">Copenhagen</a></li>
+</ul></li>
+<li id="c146"><a href="https://time.is/Equatorial_Guinea" class="s2 country bold" onmouseover="hvr(146,1)" onmouseout="hvr(146)">Equatorial Guinea</a>
+<ul><li><a href="https://time.is/Bata" class="s9">Bata</a></li>
+<li><a href="https://time.is/Malabo" class="s10">Malabo</a></li>
+</ul></li>
+<li id="c116"><a href="https://time.is/France" class="s4 country multizone bold" onmouseover="hvr(116,1)" onmouseout="hvr(116)">France</a>
+<ul><li><a href="https://time.is/Lyon" class="s12">Lyon</a></li>
+<li><a href="https://time.is/Marseille" class="s12">Marseille</a></li>
+<li><a href="https://time.is/Nice" class="s14">Nice</a></li>
+<li><a href="https://time.is/Paris" class="s12">Paris</a></li>
+<li><a href="https://time.is/Toulouse" class="s14">Toulouse</a></li>
+</ul></li>
+<li id="c145"><a href="https://time.is/Gabon" class="s2 country bold" onmouseover="hvr(145,1)" onmouseout="hvr(145)">Gabon</a>
+<ul><li><a href="https://time.is/Libreville" class="s9">Libreville</a></li>
+<li><a href="https://time.is/Port-Gentil" class="s9">Port-Gentil</a></li>
+</ul></li>
+<li id="c114"><a href="https://time.is/Germany" class="s4 country bold" onmouseover="hvr(114,1)" onmouseout="hvr(114)">Germany</a>
+<ul><li><a href="https://time.is/Berlin" class="s13">Berlin</a></li>
+<li><a href="https://time.is/Cologne" class="s11">Cologne</a></li>
+<li><a href="https://time.is/Essen" class="s11">Essen</a></li>
+<li><a href="https://time.is/Frankfurt" class="s12">Frankfurt</a></li>
+<li><a href="https://time.is/Hamburg" class="s12">Hamburg</a></li>
+<li><a href="https://time.is/Munich" class="s11">Munich</a></li>
+<li><a href="https://time.is/Stuttgart" class="s12">Stuttgart</a></li>
+</ul></li>
+<li id="c154"><a href="https://time.is/Gibraltar" class="s2 country bold" onmouseover="hvr(154,1)" onmouseout="hvr(154)">Gibraltar</a>
+</li>
+<li id="c129"><a href="https://time.is/Hungary" class="s5 country bold" onmouseover="hvr(129,1)" onmouseout="hvr(129)">Hungary</a>
+<ul><li><a href="https://time.is/Budapest" class="s8">Budapest</a></li>
+<li><a href="https://time.is/Debrecen" class="s7">Debrecen</a></li>
+</ul></li>
+<li id="c117"><a href="https://time.is/Italy" class="s4 country bold" onmouseover="hvr(117,1)" onmouseout="hvr(117)">Italy</a>
+<ul><li><a href="https://time.is/Milan" class="s16">Milan</a></li>
+<li><a href="https://time.is/Naples" class="s15">Naples</a></li>
+<li><a href="https://time.is/Palermo" class="s16">Palermo</a></li>
+<li><a href="https://time.is/Rome" class="s16">Rome</a></li>
+<li><a href="https://time.is/Turin" class="s15">Turin</a></li>
+</ul></li>
+<li id="c151"><a href="https://time.is/Liechtenstein" class="s2 country bold" onmouseover="hvr(151,1)" onmouseout="hvr(151)">Liechtenstein</a>
+</li>
+<li id="c148"><a href="https://time.is/Luxembourg" class="s3 country bold" onmouseover="hvr(148,1)" onmouseout="hvr(148)">Luxembourg</a>
+</li>
+<li id="c143"><a href="https://time.is/Macedonia" class="s1 country bold" onmouseover="hvr(143,1)" onmouseout="hvr(143)">Macedonia</a>
+<ul><li><a href="https://time.is/Bitola,_Bitola" class="s9">Bitola</a></li>
+<li><a href="https://time.is/Skopje" class="s9">Skopje</a></li>
+</ul></li>
+<li id="c149"><a href="https://time.is/Malta" class="s3 country bold" onmouseover="hvr(149,1)" onmouseout="hvr(149)">Malta</a>
+<ul><li><a href="https://time.is/Valletta" class="s9">Valletta</a></li>
+</ul></li>
+<li id="c152"><a href="https://time.is/Monaco" class="s2 country bold" onmouseover="hvr(152,1)" onmouseout="hvr(152)">Monaco</a>
+</li>
+<li id="c147"><a href="https://time.is/Montenegro" class="s3 country bold" onmouseover="hvr(147,1)" onmouseout="hvr(147)">Montenegro</a>
+<ul><li><a href="https://time.is/Podgorica" class="s9">Podgorica</a></li>
+</ul></li>
+<li id="c122"><a href="https://time.is/Netherlands" class="s4 country multizone bold" onmouseover="hvr(122,1)" onmouseout="hvr(122)">Netherlands</a>
+<ul><li><a href="https://time.is/Amsterdam" class="s15">Amsterdam</a></li>
+<li><a href="https://time.is/The_Hague" class="s15">The Hague</a></li>
+</ul></li>
+<li id="c123"><a href="https://time.is/Niger" class="s4 country bold" onmouseover="hvr(123,1)" onmouseout="hvr(123)">Niger</a>
+<ul><li><a href="https://time.is/Niamey" class="s11">Niamey</a></li>
+</ul></li>
+<li id="c113"><a href="https://time.is/Nigeria" class="s6 country bold" onmouseover="hvr(113,1)" onmouseout="hvr(113)">Nigeria</a>
+<ul><li><a href="https://time.is/Aba" class="s13">Aba</a></li>
+<li><a href="https://time.is/Abuja" class="s16">Abuja</a></li>
+<li><a href="https://time.is/Benin_City" class="s13">Benin City</a></li>
+<li><a href="https://time.is/Ibadan" class="s13">Ibadan</a></li>
+<li><a href="https://time.is/Kaduna" class="s13">Kaduna</a></li>
+<li><a href="https://time.is/Kano" class="s13">Kano</a></li>
+<li><a href="https://time.is/Lagos" class="s13">Lagos</a></li>
+<li><a href="https://time.is/Maiduguri" class="s14">Maiduguri</a></li>
+<li><a href="https://time.is/Port_Harcourt" class="s13">Port Harcourt</a></li>
+<li><a href="https://time.is/Zaria" class="s13">Zaria</a></li>
+</ul></li>
+<li id="c137"><a href="https://time.is/Norway" class="s1 country bold" onmouseover="hvr(137,1)" onmouseout="hvr(137)">Norway</a>
+<ul><li><a href="https://time.is/Bergen" class="s10">Bergen</a></li>
+<li><a href="https://time.is/Oslo" class="s10">Oslo</a></li>
+</ul></li>
+<li id="c119"><a href="https://time.is/Poland" class="s3 country bold" onmouseover="hvr(119,1)" onmouseout="hvr(119)">Poland</a>
+<ul><li><a href="https://time.is/Krakow" class="s14">Krakow</a></li>
+<li><a href="https://time.is/Warsaw" class="s15">Warsaw</a></li>
+<li><a href="https://time.is/%C5%81%C3%B3d%C5%BA" class="s14">Łódź</a></li>
+</ul></li>
+<li id="c153"><a href="https://time.is/San_Marino" class="s2 country bold" onmouseover="hvr(153,1)" onmouseout="hvr(153)">San Marino</a>
+</li>
+<li id="c134"><a href="https://time.is/Serbia" class="s3 country bold" onmouseover="hvr(134,1)" onmouseout="hvr(134)">Serbia</a>
+<ul><li><a href="https://time.is/Belgrade" class="s7">Belgrade</a></li>
+<li><a href="https://time.is/Ni%C5%A1" class="s7">Niš</a></li>
+</ul></li>
+<li id="c136"><a href="https://time.is/Slovakia" class="s1 country bold" onmouseover="hvr(136,1)" onmouseout="hvr(136)">Slovakia</a>
+<ul><li><a href="https://time.is/Bratislava" class="s8">Bratislava</a></li>
+<li><a href="https://time.is/Ko%C5%A1ice" class="s10">Košice</a></li>
+</ul></li>
+<li id="c144"><a href="https://time.is/Slovenia" class="s1 country bold" onmouseover="hvr(144,1)" onmouseout="hvr(144)">Slovenia</a>
+<ul><li><a href="https://time.is/Ljubljana" class="s9">Ljubljana</a></li>
+<li><a href="https://time.is/Maribor,_Maribor" class="s8">Maribor</a></li>
+</ul></li>
+<li id="c118"><a href="https://time.is/Spain" class="s4 country multizone bold" onmouseover="hvr(118,1)" onmouseout="hvr(118)">Spain</a>
+<ul><li><a href="https://time.is/Barcelona" class="s16">Barcelona</a></li>
+<li><a href="https://time.is/Madrid" class="s16">Madrid</a></li>
+<li><a href="https://time.is/Seville" class="s16">Seville</a></li>
+<li><a href="https://time.is/Valencia,_Valencia" class="s16">Valencia</a></li>
+<li><a href="https://time.is/Zaragoza" class="s15">Zaragoza</a></li>
+</ul></li>
+<li id="c130"><a href="https://time.is/Sweden" class="s4 country bold" onmouseover="hvr(130,1)" onmouseout="hvr(130)">Sweden</a>
+<ul><li><a href="https://time.is/Gothenburg" class="s6">Gothenburg</a></li>
+<li><a href="https://time.is/Stockholm" class="s7">Stockholm</a></li>
+</ul></li>
+<li id="c133"><a href="https://time.is/Switzerland" class="s5 country bold" onmouseover="hvr(133,1)" onmouseout="hvr(133)">Switzerland</a>
+<ul><li><a href="https://time.is/Bern" class="s6">Bern</a></li>
+<li><a href="https://time.is/Zurich,_Zurich" class="s7">Zurich</a></li>
+</ul></li>
+<li id="c125"><a href="https://time.is/Tunisia" class="s5 country bold" onmouseover="hvr(125,1)" onmouseout="hvr(125)">Tunisia</a>
+<ul><li><a href="https://time.is/Tunis" class="s7">Tunis</a></li>
+</ul></li>
+<li id="c155"><a href="https://time.is/Vatican_City" class="s2 country bold" onmouseover="hvr(155,1)" onmouseout="hvr(155)">Vatican City</a>
+</li>
+</ul></div></div><div class="section even"><h1>UTC+2</h1><div class="cloud scloud w90"><ul><li id="c181"><a href="https://time.is/Botswana" class="s3 country bold" onmouseover="hvr(181,1)" onmouseout="hvr(181)">Botswana</a>
+<ul><li><a href="https://time.is/Francistown" class="s11">Francistown</a></li>
+<li><a href="https://time.is/Gaborone" class="s10">Gaborone</a></li>
+</ul></li>
+<li id="c171"><a href="https://time.is/Bulgaria" class="s3 country bold" onmouseover="hvr(171,1)" onmouseout="hvr(171)">Bulgaria</a>
+<ul><li><a href="https://time.is/Plovdiv" class="s7">Plovdiv</a></li>
+<li><a href="https://time.is/Sofia" class="s7">Sofia</a></li>
+</ul></li>
+<li id="c169"><a href="https://time.is/Burundi" class="s5 country bold" onmouseover="hvr(169,1)" onmouseout="hvr(169)">Burundi</a>
+<ul><li><a href="https://time.is/Bujumbura" class="s15">Bujumbura</a></li>
+<li><a href="https://time.is/Muyinga,_Muyinga" class="s11">Muyinga</a></li>
+</ul></li>
+<li id="c158"><a href="https://time.is/Congo-Kinshasa" class="s4 country multizone bold" onmouseover="hvr(158,1)" onmouseout="hvr(158)">Congo-Kinshasa</a>
+<ul><li><a href="https://time.is/Kisangani" class="s13">Kisangani</a></li>
+<li><a href="https://time.is/Lubumbashi" class="s13">Lubumbashi</a></li>
+<li><a href="https://time.is/Mbuji-Mayi" class="s13">Mbuji-Mayi</a></li>
+</ul></li>
+<li id="c185"><a href="https://time.is/Cyprus" class="s2 country bold" onmouseover="hvr(185,1)" onmouseout="hvr(185)">Cyprus</a>
+<ul><li><a href="https://time.is/Limassol" class="s9">Limassol</a></li>
+<li><a href="https://time.is/Nicosia" class="s9">Nicosia</a></li>
+</ul></li>
+<li id="c157"><a href="https://time.is/Egypt" class="s4 country bold" onmouseover="hvr(157,1)" onmouseout="hvr(157)">Egypt</a>
+<ul><li><a href="https://time.is/Alexandria" class="s13">Alexandria</a></li>
+<li><a href="https://time.is/Cairo" class="s13">Cairo</a></li>
+<li><a href="https://time.is/Port_Said" class="s13">Port Said</a></li>
+</ul></li>
+<li id="c184"><a href="https://time.is/Estonia" class="s2 country bold" onmouseover="hvr(184,1)" onmouseout="hvr(184)">Estonia</a>
+<ul><li><a href="https://time.is/Tallinn" class="s8">Tallinn</a></li>
+<li><a href="https://time.is/Tartu,_Tartu" class="s9">Tartu</a></li>
+</ul></li>
+<li id="c174"><a href="https://time.is/Finland" class="s1 country bold" onmouseover="hvr(174,1)" onmouseout="hvr(174)">Finland</a>
+<ul><li><a href="https://time.is/Espoo" class="s7">Espoo</a></li>
+<li><a href="https://time.is/Helsinki" class="s7">Helsinki</a></li>
+</ul></li>
+<li id="c168"><a href="https://time.is/Greece" class="s5 country bold" onmouseover="hvr(168,1)" onmouseout="hvr(168)">Greece</a>
+<ul><li><a href="https://time.is/Athens" class="s14">Athens</a></li>
+<li><a href="https://time.is/Thessaloniki" class="s15">Thessaloniki</a></li>
+</ul></li>
+<li id="c170"><a href="https://time.is/Israel" class="s5 country bold" onmouseover="hvr(170,1)" onmouseout="hvr(170)">Israel</a>
+<ul><li><a href="https://time.is/Haifa,_Haifa" class="s7">Haifa</a></li>
+<li><a href="https://time.is/Jerusalem" class="s11">Jerusalem</a></li>
+</ul></li>
+<li id="c173"><a href="https://time.is/Jordan" class="s1 country bold" onmouseover="hvr(173,1)" onmouseout="hvr(173)">Jordan</a>
+<ul><li><a href="https://time.is/Amman" class="s8">Amman</a></li>
+<li><a href="https://time.is/Zarqa" class="s8">Zarqa</a></li>
+</ul></li>
+<li id="c179"><a href="https://time.is/Latvia" class="s2 country bold" onmouseover="hvr(179,1)" onmouseout="hvr(179)">Latvia</a>
+<ul><li><a href="https://time.is/Daugavpils" class="s10">Daugavpils</a></li>
+<li><a href="https://time.is/Riga" class="s8">Riga</a></li>
+</ul></li>
+<li id="c176"><a href="https://time.is/Lebanon" class="s1 country bold" onmouseover="hvr(176,1)" onmouseout="hvr(176)">Lebanon</a>
+<ul><li><a href="https://time.is/Beirut" class="s6">Beirut</a></li>
+<li><a href="https://time.is/Tripoli,_Lebanon" class="s6">Tripoli</a></li>
+</ul></li>
+<li id="c182"><a href="https://time.is/Lesotho" class="s3 country bold" onmouseover="hvr(182,1)" onmouseout="hvr(182)">Lesotho</a>
+<ul><li><a href="https://time.is/Mafeteng,_Mafeteng" class="s10">Mafeteng</a></li>
+<li><a href="https://time.is/Maseru" class="s11">Maseru</a></li>
+</ul></li>
+<li id="c172"><a href="https://time.is/Libya" class="s3 country bold" onmouseover="hvr(172,1)" onmouseout="hvr(172)">Libya</a>
+<ul><li><a href="https://time.is/Tripoli" class="s8">Tripoli</a></li>
+</ul></li>
+<li id="c178"><a href="https://time.is/Lithuania" class="s1 country bold" onmouseover="hvr(178,1)" onmouseout="hvr(178)">Lithuania</a>
+<ul><li><a href="https://time.is/Kaunas" class="s8">Kaunas</a></li>
+<li><a href="https://time.is/Vilnius" class="s6">Vilnius</a></li>
+</ul></li>
+<li id="c164"><a href="https://time.is/Malawi" class="s4 country bold" onmouseover="hvr(164,1)" onmouseout="hvr(164)">Malawi</a>
+<ul><li><a href="https://time.is/Blantyre" class="s16">Blantyre</a></li>
+<li><a href="https://time.is/Lilongwe" class="s16">Lilongwe</a></li>
+</ul></li>
+<li id="c175"><a href="https://time.is/Moldova" class="s1 country bold" onmouseover="hvr(175,1)" onmouseout="hvr(175)">Moldova</a>
+<ul><li><a href="https://time.is/Chi%C5%9Fin%C4%83u" class="s6">Chişinău</a></li>
+<li><a href="https://time.is/Tiraspol" class="s6">Tiraspol</a></li>
+</ul></li>
+<li id="c162"><a href="https://time.is/Mozambique" class="s3 country bold" onmouseover="hvr(162,1)" onmouseout="hvr(162)">Mozambique</a>
+<ul><li><a href="https://time.is/Maputo" class="s15">Maputo</a></li>
+<li><a href="https://time.is/Matola" class="s15">Matola</a></li>
+</ul></li>
+<li id="c180"><a href="https://time.is/Namibia" class="s2 country bold" onmouseover="hvr(180,1)" onmouseout="hvr(180)">Namibia</a>
+<ul><li><a href="https://time.is/Rundu" class="s10">Rundu</a></li>
+<li><a href="https://time.is/Windhoek" class="s10">Windhoek</a></li>
+</ul></li>
+<li id="c177"><a href="https://time.is/Palestine" class="s1 country bold" onmouseover="hvr(177,1)" onmouseout="hvr(177)">Palestine</a>
+<ul><li><a href="https://time.is/Gaza" class="s7">Gaza</a></li>
+</ul></li>
+<li id="c163"><a href="https://time.is/Romania" class="s4 country bold" onmouseover="hvr(163,1)" onmouseout="hvr(163)">Romania</a>
+<ul><li><a href="https://time.is/Bucharest" class="s16">Bucharest</a></li>
+<li><a href="https://time.is/Ia%C8%99i" class="s16">Iași</a></li>
+</ul></li>
+<li id="c156"><a href="https://time.is/Russia" class="s6 country multizone bold" onmouseover="hvr(156,1)" onmouseout="hvr(156)">Russia</a>
+<ul><li><a href="https://time.is/Kaliningrad" class="s16">Kaliningrad</a></li>
+</ul></li>
+<li id="c167"><a href="https://time.is/Rwanda" class="s5 country bold" onmouseover="hvr(167,1)" onmouseout="hvr(167)">Rwanda</a>
+<ul><li><a href="https://time.is/Kigali" class="s14">Kigali</a></li>
+</ul></li>
+<li id="c159"><a href="https://time.is/South_Africa" class="s4 country bold" onmouseover="hvr(159,1)" onmouseout="hvr(159)">South Africa</a>
+<ul><li><a href="https://time.is/Cape_Town" class="s12">Cape Town</a></li>
+<li><a href="https://time.is/Durban" class="s11">Durban</a></li>
+<li><a href="https://time.is/Johannesburg" class="s11">Johannesburg</a></li>
+<li><a href="https://time.is/Pretoria" class="s12">Pretoria</a></li>
+<li><a href="https://time.is/Soweto" class="s12">Soweto</a></li>
+</ul></li>
+<li id="c183"><a href="https://time.is/Swaziland" class="s2 country bold" onmouseover="hvr(183,1)" onmouseout="hvr(183)">Swaziland</a>
+<ul><li><a href="https://time.is/Manzini,_Manzini" class="s9">Manzini</a></li>
+<li><a href="https://time.is/Mbabane" class="s10">Mbabane</a></li>
+</ul></li>
+<li id="c161"><a href="https://time.is/Syria" class="s3 country bold" onmouseover="hvr(161,1)" onmouseout="hvr(161)">Syria</a>
+<ul><li><a href="https://time.is/Aleppo" class="s14">Aleppo</a></li>
+<li><a href="https://time.is/Damascus" class="s14">Damascus</a></li>
+</ul></li>
+<li id="c160"><a href="https://time.is/Ukraine" class="s4 country bold" onmouseover="hvr(160,1)" onmouseout="hvr(160)">Ukraine</a>
+<ul><li><a href="https://time.is/Dnipropetrovsk" class="s12">Dnipropetrovsk</a></li>
+<li><a href="https://time.is/Kharkiv" class="s12">Kharkiv</a></li>
+<li><a href="https://time.is/Kyiv" class="s12">Kyiv</a></li>
+</ul></li>
+<li id="c165"><a href="https://time.is/Zambia" class="s5 country bold" onmouseover="hvr(165,1)" onmouseout="hvr(165)">Zambia</a>
+<ul><li><a href="https://time.is/Kitwe" class="s15">Kitwe</a></li>
+<li><a href="https://time.is/Lusaka" class="s15">Lusaka</a></li>
+</ul></li>
+<li id="c166"><a href="https://time.is/Zimbabwe" class="s5 country bold" onmouseover="hvr(166,1)" onmouseout="hvr(166)">Zimbabwe</a>
+<ul><li><a href="https://time.is/Bulawayo" class="s14">Bulawayo</a></li>
+<li><a href="https://time.is/Harare" class="s14">Harare</a></li>
+</ul></li>
+<li id="c186"><a href="https://time.is/%C3%85land" class="s2 country bold" onmouseover="hvr(186,1)" onmouseout="hvr(186)">Åland</a>
+<ul><li><a href="https://time.is/Mariehamn" class="s9">Mariehamn</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+3</h1><div class="cloud scloud w90"><ul><li id="c207"><a href="https://time.is/Bahrain" class="s2 country bold" onmouseover="hvr(207,1)" onmouseout="hvr(207)">Bahrain</a>
+<ul><li><a href="https://time.is/Manama" class="s9">Manama</a></li>
+</ul></li>
+<li id="c200"><a href="https://time.is/Belarus" class="s1 country bold" onmouseover="hvr(200,1)" onmouseout="hvr(200)">Belarus</a>
+<ul><li><a href="https://time.is/Gomel,_Gomel" class="s8">Gomel</a></li>
+<li><a href="https://time.is/Minsk" class="s8">Minsk</a></li>
+<li><a href="https://time.is/Mogilev,_Mogilev" class="s10">Mogilev</a></li>
+</ul></li>
+<li id="c205"><a href="https://time.is/Comoros" class="s2 country bold" onmouseover="hvr(205,1)" onmouseout="hvr(205)">Comoros</a>
+<ul><li><a href="https://time.is/Moroni" class="s8">Moroni</a></li>
+</ul></li>
+<li id="c206"><a href="https://time.is/Djibouti" class="s2 country bold" onmouseover="hvr(206,1)" onmouseout="hvr(206)">Djibouti</a>
+<ul><li><a href="https://time.is/Djibouti,_Djibouti" class="s8">Djibouti</a></li>
+</ul></li>
+<li id="c202"><a href="https://time.is/Eritrea" class="s1 country bold" onmouseover="hvr(202,1)" onmouseout="hvr(202)">Eritrea</a>
+<ul><li><a href="https://time.is/Asmara" class="s10">Asmara</a></li>
+<li><a href="https://time.is/Cheren" class="s10">Cheren</a></li>
+</ul></li>
+<li id="c188"><a href="https://time.is/Ethiopia" class="s4 country bold" onmouseover="hvr(188,1)" onmouseout="hvr(188)">Ethiopia</a>
+<ul><li><a href="https://time.is/Addis_Ababa" class="s13">Addis Ababa</a></li>
+<li><a href="https://time.is/Bahir_Dar" class="s11">Bahir Dar</a></li>
+<li><a href="https://time.is/Dire_Dawa,_Dire_Dawa" class="s12">Dire Dawa</a></li>
+<li><a href="https://time.is/Mek%E2%80%99el%C4%93" class="s12">Mek’elē</a></li>
+<li><a href="https://time.is/Nazr%C4%93t" class="s11">Nazrēt</a></li>
+</ul></li>
+<li id="c195"><a href="https://time.is/Iraq" class="s4 country bold" onmouseover="hvr(195,1)" onmouseout="hvr(195)">Iraq</a>
+<ul><li><a href="https://time.is/Baghdad" class="s7">Baghdad</a></li>
+<li><a href="https://time.is/Basra" class="s7">Basra</a></li>
+</ul></li>
+<li id="c192"><a href="https://time.is/Kenya" class="s4 country bold" onmouseover="hvr(192,1)" onmouseout="hvr(192)">Kenya</a>
+<ul><li><a href="https://time.is/Mombasa" class="s14">Mombasa</a></li>
+<li><a href="https://time.is/Nairobi" class="s14">Nairobi</a></li>
+<li><a href="https://time.is/Nakuru,_Nakuru" class="s14">Nakuru</a></li>
+</ul></li>
+<li id="c203"><a href="https://time.is/Kuwait" class="s1 country bold" onmouseover="hvr(203,1)" onmouseout="hvr(203)">Kuwait</a>
+<ul><li><a href="https://time.is/Al_Ahmadi" class="s9">Al Ahmadi</a></li>
+<li><a href="https://time.is/Kuwait_City" class="s9">Kuwait City</a></li>
+</ul></li>
+<li id="c198"><a href="https://time.is/Madagascar" class="s3 country bold" onmouseover="hvr(198,1)" onmouseout="hvr(198)">Madagascar</a>
+<ul><li><a href="https://time.is/Antananarivo" class="s6 bold">Antananarivo</a></li>
+<li><a href="https://time.is/Toamasina" class="s6">Toamasina</a></li>
+</ul></li>
+<li id="c208"><a href="https://time.is/Mayotte" class="s2 country bold" onmouseover="hvr(208,1)" onmouseout="hvr(208)">Mayotte</a>
+<ul><li><a href="https://time.is/Mamoudzou" class="s9">Mamoutzou</a></li>
+</ul></li>
+<li id="c204"><a href="https://time.is/Qatar" class="s2 country bold" onmouseover="hvr(204,1)" onmouseout="hvr(204)">Qatar</a>
+<ul><li><a href="https://time.is/Doha" class="s8">Doha</a></li>
+</ul></li>
+<li id="c187"><a href="https://time.is/Russia" class="s5 country multizone bold" onmouseover="hvr(187,1)" onmouseout="hvr(187)">Russia</a>
+<ul><li><a href="https://time.is/Kazan" class="s13">Kazan</a></li>
+<li><a href="https://time.is/Moscow" class="s16">Moscow</a></li>
+<li><a href="https://time.is/Nizhny_Novgorod" class="s12">Nizhny Novgorod</a></li>
+<li><a href="https://time.is/Rostov-on-Don" class="s13">Rostov-on-Don</a></li>
+<li><a href="https://time.is/Saint_Petersburg" class="s13">Saint Petersburg</a></li>
+</ul></li>
+<li id="c196"><a href="https://time.is/Saudi_Arabia" class="s4 country bold" onmouseover="hvr(196,1)" onmouseout="hvr(196)">Saudi Arabia</a>
+<ul><li><a href="https://time.is/Jeddah" class="s6">Jeddah</a></li>
+<li><a href="https://time.is/Mecca" class="s7">Mecca</a></li>
+<li><a href="https://time.is/Riyadh" class="s6">Riyadh</a></li>
+</ul></li>
+<li id="c199"><a href="https://time.is/Somalia" class="s1 country bold" onmouseover="hvr(199,1)" onmouseout="hvr(199)">Somalia</a>
+<ul><li><a href="https://time.is/Mogadishu" class="s6">Mogadishu</a></li>
+</ul></li>
+<li id="c201"><a href="https://time.is/South_Sudan" class="s1 country bold" onmouseover="hvr(201,1)" onmouseout="hvr(201)">South Sudan</a>
+<ul><li><a href="https://time.is/Juba" class="s10">Juba</a></li>
+<li><a href="https://time.is/Malakal" class="s10">Malakal</a></li>
+</ul></li>
+<li id="c193"><a href="https://time.is/Sudan" class="s4 country bold" onmouseover="hvr(193,1)" onmouseout="hvr(193)">Sudan</a>
+<ul><li><a href="https://time.is/Kassala,_Kassala" class="s11">Kassala</a></li>
+<li><a href="https://time.is/Khartoum" class="s15">Khartoum</a></li>
+<li><a href="https://time.is/Port_Sudan" class="s15">Port Sudan</a></li>
+</ul></li>
+<li id="c191"><a href="https://time.is/Tanzania" class="s3 country bold" onmouseover="hvr(191,1)" onmouseout="hvr(191)">Tanzania</a>
+<ul><li><a href="https://time.is/Dar_es_Salaam" class="s15">Dar es Salaam</a></li>
+<li><a href="https://time.is/Dodoma" class="s15">Dodoma</a></li>
+</ul></li>
+<li id="c189"><a href="https://time.is/Turkey" class="s3 country bold" onmouseover="hvr(189,1)" onmouseout="hvr(189)">Turkey</a>
+<ul><li><a href="https://time.is/Adana" class="s14">Adana</a></li>
+<li><a href="https://time.is/Ankara" class="s12">Ankara</a></li>
+<li><a href="https://time.is/Bursa" class="s14">Bursa</a></li>
+<li><a href="https://time.is/Gaziantep" class="s15">Gaziantep</a></li>
+<li><a href="https://time.is/Istanbul" class="s11">Istanbul</a></li>
+<li><a href="https://time.is/Izmir" class="s12">Izmir</a></li>
+<li><a href="https://time.is/Konya" class="s16">Konya</a></li>
+</ul></li>
+<li id="c194"><a href="https://time.is/Uganda" class="s5 country bold" onmouseover="hvr(194,1)" onmouseout="hvr(194)">Uganda</a>
+<ul><li><a href="https://time.is/Gulu" class="s7">Gulu</a></li>
+<li><a href="https://time.is/Kampala" class="s11">Kampala</a></li>
+<li><a href="https://time.is/Lira" class="s7">Lira</a></li>
+</ul></li>
+<li id="c190"><a href="https://time.is/Ukraine" class="s3 country bold" onmouseover="hvr(190,1)" onmouseout="hvr(190)">Ukraine</a>
+<ul><li><a href="https://time.is/Donetsk" class="s16">Donetsk</a></li>
+<li><a href="https://time.is/Luhansk,_Luhansk" class="s16">Luhansk</a></li>
+</ul></li>
+<li id="c197"><a href="https://time.is/Yemen" class="s3 country bold" onmouseover="hvr(197,1)" onmouseout="hvr(197)">Yemen</a>
+<ul><li><a href="https://time.is/Al_Hudaydah" class="s5 bold">Al Hudaydah</a></li>
+<li><a href="https://time.is/Sanaa" class="s5 bold">Sanaa</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+3:30</h1><div class="cloud scloud w90"><ul><li id="c209"><a href="https://time.is/Iran" class="s1 country bold" onmouseover="hvr(209,1)" onmouseout="hvr(209)">Iran</a>
+<ul><li><a href="https://time.is/Isfahan" class="s7">Isfahan</a></li>
+<li><a href="https://time.is/Karaj" class="s5">Karaj</a></li>
+<li><a href="https://time.is/Mashhad" class="s6">Mashhad</a></li>
+<li><a href="https://time.is/Qom" class="s3 bold">Qom</a></li>
+<li><a href="https://time.is/Shiraz" class="s2 bold">Shiraz</a></li>
+<li><a href="https://time.is/Tabriz" class="s4">Tabriz</a></li>
+<li><a href="https://time.is/Tehran" class="s8">Tehran</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+4</h1><div class="cloud scloud w90"><ul><li id="c214"><a href="https://time.is/Armenia" class="s3 country bold" onmouseover="hvr(214,1)" onmouseout="hvr(214)">Armenia</a>
+<ul><li><a href="https://time.is/Yerevan" class="s10">Yerevan</a></li>
+</ul></li>
+<li id="c211"><a href="https://time.is/Azerbaijan" class="s4 country bold" onmouseover="hvr(211,1)" onmouseout="hvr(211)">Azerbaijan</a>
+<ul><li><a href="https://time.is/Baku" class="s12">Baku</a></li>
+<li><a href="https://time.is/Ganja" class="s13">Ganja</a></li>
+</ul></li>
+<li id="c213"><a href="https://time.is/Georgia" class="s5 country bold" onmouseover="hvr(213,1)" onmouseout="hvr(213)">Georgia</a>
+<ul><li><a href="https://time.is/Kutaisi" class="s11">Kutaisi</a></li>
+<li><a href="https://time.is/Tbilisi" class="s14">Tbilisi</a></li>
+</ul></li>
+<li id="c216"><a href="https://time.is/Mauritius" class="s1 country bold" onmouseover="hvr(216,1)" onmouseout="hvr(216)">Mauritius</a>
+<ul><li><a href="https://time.is/Port_Louis" class="s8">Port Louis</a></li>
+<li><a href="https://time.is/Vacoas" class="s8">Vacoas</a></li>
+</ul></li>
+<li id="c215"><a href="https://time.is/Oman" class="s2 country bold" onmouseover="hvr(215,1)" onmouseout="hvr(215)">Oman</a>
+<ul><li><a href="https://time.is/As_S%C4%ABb_al_Jad%C4%ABdah" class="s6">As Sīb al Jadīdah</a></li>
+<li><a href="https://time.is/Muscat" class="s7">Muscat</a></li>
+</ul></li>
+<li id="c210"><a href="https://time.is/Russia" class="s6 country multizone" onmouseover="hvr(210,1)" onmouseout="hvr(210)">Russia</a>
+<ul><li><a href="https://time.is/Samara" class="s16">Samara</a></li>
+<li><a href="https://time.is/Tolyatti" class="s12">Tolyatti</a></li>
+</ul></li>
+<li id="c217"><a href="https://time.is/R%C3%A9union" class="s1 country bold" onmouseover="hvr(217,1)" onmouseout="hvr(217)">Réunion</a>
+<ul><li><a href="https://time.is/Saint-Denis" class="s10">Saint-Denis</a></li>
+</ul></li>
+<li id="c218"><a href="https://time.is/Seychelles" class="s2 country bold" onmouseover="hvr(218,1)" onmouseout="hvr(218)">Seychelles</a>
+<ul><li><a href="https://time.is/Victoria,_Seychelles" class="s9">Victoria</a></li>
+</ul></li>
+<li id="c212"><a href="https://time.is/United_Arab_Emirates" class="s4 country bold" onmouseover="hvr(212,1)" onmouseout="hvr(212)">United Arab Emirates</a>
+<ul><li><a href="https://time.is/Abu_Dhabi" class="s15">Abu Dhabi</a></li>
+<li><a href="https://time.is/Dubai" class="s14">Dubai</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+4:30</h1><div class="cloud scloud w90"><ul><li id="c219"><a href="https://time.is/Afghanistan" class="s1 country bold" onmouseover="hvr(219,1)" onmouseout="hvr(219)">Afghanistan</a>
+<ul><li><a href="https://time.is/Kabul" class="s4">Kabul</a></li>
+<li><a href="https://time.is/Kandahar,_Kandah%C4%81r" class="s3">Kandahar</a></li>
+<li><a href="https://time.is/Mazari_Sharif" class="s2">Mazari Sharif</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+5</h1><div class="cloud scloud w90"><ul><li id="c227"><a href="https://time.is/French_Southern_Territories" class="s2 country bold" onmouseover="hvr(227,1)" onmouseout="hvr(227)">French Southern Territories</a>
+<ul><li><a href="https://time.is/Port-aux-Fran%C3%A7ais" class="s8">Port-aux-Français</a></li>
+</ul></li>
+<li id="c223"><a href="https://time.is/Kazakhstan" class="s3 country multizone bold" onmouseover="hvr(223,1)" onmouseout="hvr(223)">Kazakhstan</a>
+<ul><li><a href="https://time.is/Aqt%C3%B6be" class="s5 bold">Aqtöbe</a></li>
+</ul></li>
+<li id="c226"><a href="https://time.is/Maldives" class="s1 country bold" onmouseover="hvr(226,1)" onmouseout="hvr(226)">Maldives</a>
+<ul><li><a href="https://time.is/Mal%C3%A9" class="s9">Malé</a></li>
+</ul></li>
+<li id="c220"><a href="https://time.is/Pakistan" class="s4 country bold" onmouseover="hvr(220,1)" onmouseout="hvr(220)">Pakistan</a>
+<ul><li><a href="https://time.is/Faisalabad" class="s12">Faisalabad</a></li>
+<li><a href="https://time.is/Gujranwala" class="s15">Gujranwala</a></li>
+<li><a href="https://time.is/Hyderabad,_Pakistan" class="s14">Hyderabad</a></li>
+<li><a href="https://time.is/Islamabad" class="s16">Islamabad</a></li>
+<li><a href="https://time.is/Karachi" class="s13">Karachi</a></li>
+<li><a href="https://time.is/Lahore" class="s12">Lahore</a></li>
+<li><a href="https://time.is/Multan" class="s13">Multan</a></li>
+<li><a href="https://time.is/Peshawar" class="s15">Peshawar</a></li>
+<li><a href="https://time.is/Quetta" class="s14">Quetta</a></li>
+<li><a href="https://time.is/Rawalpindi" class="s11">Rawalpindi</a></li>
+</ul></li>
+<li id="c221"><a href="https://time.is/Russia" class="s3 country multizone bold" onmouseover="hvr(221,1)" onmouseout="hvr(221)">Russia</a>
+<ul><li><a href="https://time.is/Chelyabinsk" class="s10">Chelyabinsk</a></li>
+<li><a href="https://time.is/Yekaterinburg" class="s10">Yekaterinburg</a></li>
+</ul></li>
+<li id="c224"><a href="https://time.is/Tajikistan" class="s2 country bold" onmouseover="hvr(224,1)" onmouseout="hvr(224)">Tajikistan</a>
+<ul><li><a href="https://time.is/Dushanbe" class="s5 bold">Dushanbe</a></li>
+<li><a href="https://time.is/Khujand" class="s7">Khujand</a></li>
+</ul></li>
+<li id="c225"><a href="https://time.is/Turkmenistan" class="s1 country bold" onmouseover="hvr(225,1)" onmouseout="hvr(225)">Turkmenistan</a>
+<ul><li><a href="https://time.is/Ashgabat" class="s8">Ashkabad</a></li>
+<li><a href="https://time.is/Turkmenabat" class="s9">Turkmenabat</a></li>
+</ul></li>
+<li id="c222"><a href="https://time.is/Uzbekistan" class="s4 country bold" onmouseover="hvr(222,1)" onmouseout="hvr(222)">Uzbekistan</a>
+<ul><li><a href="https://time.is/Namangan,_Namangan" class="s6">Namangan</a></li>
+<li><a href="https://time.is/Tashkent" class="s7">Tashkent</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+5:30</h1><div class="cloud scloud w90"><ul><li id="c228"><a href="https://time.is/India" class="s2 country bold" onmouseover="hvr(228,1)" onmouseout="hvr(228)">India</a>
+<ul><li><a href="https://time.is/Ahmedabad" class="s9">Ahmedabad</a></li>
+<li><a href="https://time.is/Bangalore" class="s11">Bangalore</a></li>
+<li><a href="https://time.is/Chennai" class="s13">Chennai</a></li>
+<li><a href="https://time.is/Hyderabad" class="s8">Hyderabad</a></li>
+<li><a href="https://time.is/Kanpur" class="s5 bold">Kanpur</a></li>
+<li><a href="https://time.is/Kolkata" class="s12">Kolkata</a></li>
+<li><a href="https://time.is/Mumbai" class="s10">Mumbai</a></li>
+<li><a href="https://time.is/New_Delhi" class="s14">New Delhi</a></li>
+<li><a href="https://time.is/Pune" class="s4 bold">Pune</a></li>
+<li><a href="https://time.is/Surat" class="s3 bold">Surat</a></li>
+</ul></li>
+<li id="c229"><a href="https://time.is/Sri_Lanka" class="s1 country bold" onmouseover="hvr(229,1)" onmouseout="hvr(229)">Sri Lanka</a>
+<ul><li><a href="https://time.is/Colombo" class="s6">Colombo</a></li>
+<li><a href="https://time.is/Galkissa" class="s7">Galkissa</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+5:45</h1><div class="cloud scloud w90"><ul><li id="c230"><a href="https://time.is/Nepal" class="s1 country bold" onmouseover="hvr(230,1)" onmouseout="hvr(230)">Nepal</a>
+<ul><li><a href="https://time.is/Biratnagur" class="s2">Biratnagur</a></li>
+<li><a href="https://time.is/Kathmandu" class="s4">Kathmandu</a></li>
+<li><a href="https://time.is/Pokhara" class="s3">Pokhara</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+6</h1><div class="cloud scloud w90"><ul><li id="c231"><a href="https://time.is/Bangladesh" class="s4 country bold" onmouseover="hvr(231,1)" onmouseout="hvr(231)">Bangladesh</a>
+<ul><li><a href="https://time.is/Chittagong" class="s12">Chittagong</a></li>
+<li><a href="https://time.is/Comilla" class="s13">Comilla</a></li>
+<li><a href="https://time.is/Cox%E2%80%99s_B%C4%81z%C4%81r" class="s10">Cox’s Bāzār</a></li>
+<li><a href="https://time.is/Dhaka" class="s16">Dhaka</a></li>
+<li><a href="https://time.is/Jessore" class="s10">Jessore</a></li>
+<li><a href="https://time.is/Khulna" class="s12">Khulna</a></li>
+<li><a href="https://time.is/Narsingdi" class="s14">Narsingdi</a></li>
+<li><a href="https://time.is/Rajshahi" class="s11">Rajshahi</a></li>
+<li><a href="https://time.is/Rangpur,_Rangpur_Division" class="s14">Rangpur</a></li>
+<li><a href="https://time.is/Tongi" class="s15">Tongi</a></li>
+</ul></li>
+<li id="c235"><a href="https://time.is/Bhutan" class="s1 country bold" onmouseover="hvr(235,1)" onmouseout="hvr(235)">Bhutan</a>
+<ul><li><a href="https://time.is/Thimphu" class="s8">Thimphu</a></li>
+</ul></li>
+<li id="c236"><a href="https://time.is/British_Indian_Ocean_Territory" class="s1 country bold" onmouseover="hvr(236,1)" onmouseout="hvr(236)">British Indian Ocean Territory</a>
+</li>
+<li id="c233"><a href="https://time.is/Kazakhstan" class="s3 country multizone bold" onmouseover="hvr(233,1)" onmouseout="hvr(233)">Kazakhstan</a>
+<ul><li><a href="https://time.is/Almaty" class="s7">Almaty</a></li>
+<li><a href="https://time.is/Astana" class="s5 bold">Astana</a></li>
+</ul></li>
+<li id="c234"><a href="https://time.is/Kyrgyzstan" class="s2 country bold" onmouseover="hvr(234,1)" onmouseout="hvr(234)">Kyrgyzstan</a>
+<ul><li><a href="https://time.is/Bishkek" class="s7">Bishkek</a></li>
+<li><a href="https://time.is/Osh" class="s9">Osh</a></li>
+</ul></li>
+<li id="c232"><a href="https://time.is/Russia" class="s3 country multizone bold" onmouseover="hvr(232,1)" onmouseout="hvr(232)">Russia</a>
+<ul><li><a href="https://time.is/Barnaul" class="s5 bold">Barnaul</a></li>
+<li><a href="https://time.is/Omsk" class="s6">Omsk</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+6:30</h1><div class="cloud scloud w90"><ul><li id="c237"><a href="https://time.is/Burma" class="s2 country" onmouseover="hvr(237,1)" onmouseout="hvr(237)">Burma</a>
+<ul><li><a href="https://time.is/Naypyidaw" class="s4">Naypyidaw</a></li>
+<li><a href="https://time.is/Yangon" class="s3">Yangon</a></li>
+</ul></li>
+<li id="c238"><a href="https://time.is/Cocos_[Keeling]_Islands" class="s1 country bold" onmouseover="hvr(238,1)" onmouseout="hvr(238)">Cocos [Keeling] Islands</a>
+</li>
+</ul></div></div><div class="section even"><h1>UTC+7</h1><div class="cloud scloud w90"><ul><li id="c243"><a href="https://time.is/Cambodia" class="s2 country bold" onmouseover="hvr(243,1)" onmouseout="hvr(243)">Cambodia</a>
+<ul><li><a href="https://time.is/Phnom_Penh" class="s9">Phnom Penh</a></li>
+<li><a href="https://time.is/Takeo" class="s9">Takeo</a></li>
+</ul></li>
+<li id="c246"><a href="https://time.is/Christmas_Island" class="s1 country bold" onmouseover="hvr(246,1)" onmouseout="hvr(246)">Christmas Island</a>
+</li>
+<li id="c239"><a href="https://time.is/Indonesia" class="s4 country multizone bold" onmouseover="hvr(239,1)" onmouseout="hvr(239)">Indonesia</a>
+<ul><li><a href="https://time.is/Bandung" class="s12">Bandung</a></li>
+<li><a href="https://time.is/Bekasi" class="s11">Bekasi</a></li>
+<li><a href="https://time.is/Depok" class="s16">Depok</a></li>
+<li><a href="https://time.is/Jakarta" class="s16">Jakarta</a></li>
+<li><a href="https://time.is/Medan" class="s13">Medan</a></li>
+<li><a href="https://time.is/Palembang" class="s10">Palembang</a></li>
+<li><a href="https://time.is/Semarang" class="s13">Semarang</a></li>
+<li><a href="https://time.is/South_Tangerang" class="s13">South Tangerang</a></li>
+<li><a href="https://time.is/Surabaya" class="s12">Surabaya</a></li>
+<li><a href="https://time.is/Tangerang" class="s11">Tangerang</a></li>
+</ul></li>
+<li id="c244"><a href="https://time.is/Laos" class="s1 country bold" onmouseover="hvr(244,1)" onmouseout="hvr(244)">Laos</a>
+<ul><li><a href="https://time.is/Pakxe" class="s7">Pakxe</a></li>
+<li><a href="https://time.is/Vientiane" class="s8">Vientiane</a></li>
+</ul></li>
+<li id="c245"><a href="https://time.is/Mongolia" class="s1 country multizone bold" onmouseover="hvr(245,1)" onmouseout="hvr(245)">Mongolia</a>
+<ul><li><a href="https://time.is/Khovd,_Hovd" class="s8">Khovd</a></li>
+</ul></li>
+<li id="c240"><a href="https://time.is/Russia" class="s3 country multizone bold" onmouseover="hvr(240,1)" onmouseout="hvr(240)">Russia</a>
+<ul><li><a href="https://time.is/Krasnoyarsk" class="s15">Krasnoyarsk</a></li>
+<li><a href="https://time.is/Novosibirsk" class="s15">Novosibirsk</a></li>
+</ul></li>
+<li id="c242"><a href="https://time.is/Thailand" class="s2 country bold" onmouseover="hvr(242,1)" onmouseout="hvr(242)">Thailand</a>
+<ul><li><a href="https://time.is/Bangkok" class="s5 bold">Bangkok</a></li>
+<li><a href="https://time.is/Chon_Buri,_Chon_Buri" class="s7">Chon Buri</a></li>
+<li><a href="https://time.is/Mueang_Nonthaburi" class="s4 bold">Mueang Nonthaburi</a></li>
+<li><a href="https://time.is/Mueang_Samut_Prakan" class="s4 bold">Mueang Samut Prakan</a></li>
+<li><a href="https://time.is/Udon_Thani,_Udon" class="s7">Udon Thani</a></li>
+</ul></li>
+<li id="c241"><a href="https://time.is/Vietnam" class="s3 country bold" onmouseover="hvr(241,1)" onmouseout="hvr(241)">Vietnam</a>
+<ul><li><a href="https://time.is/Bi%C3%AAn_H%C3%B2a" class="s6">Biên Hòa</a></li>
+<li><a href="https://time.is/Da_Nang" class="s10">Da Nang</a></li>
+<li><a href="https://time.is/Haiphong" class="s10">Haiphong</a></li>
+<li><a href="https://time.is/Hanoi" class="s14">Hanoi</a></li>
+<li><a href="https://time.is/HoChiMinh_City" class="s14">HoChiMinh City</a></li>
+<li><a href="https://time.is/Hu%E1%BA%BF" class="s6">Huế</a></li>
+<li><a href="https://time.is/Nha_Trang" class="s5 bold">Nha Trang</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+8</h1><div class="cloud scloud w90"><ul><li id="c255"><a href="https://time.is/Australia" class="s1 country multizone bold" onmouseover="hvr(255,1)" onmouseout="hvr(255)">Australia</a>
+<ul><li><a href="https://time.is/Mandurah" class="s9">Mandurah</a></li>
+<li><a href="https://time.is/Perth" class="s10">Perth</a></li>
+<li><a href="https://time.is/Western_Australia" class="s5 bold">Western Australia</a></li>
+</ul></li>
+<li id="c258"><a href="https://time.is/Brunei" class="s2 country bold" onmouseover="hvr(258,1)" onmouseout="hvr(258)">Brunei</a>
+<ul><li><a href="https://time.is/Bandar_Seri_Begawan" class="s8">Bandar Seri Begawan</a></li>
+</ul></li>
+<li id="c249"><a href="https://time.is/China" class="s3 country bold" onmouseover="hvr(249,1)" onmouseout="hvr(249)">China</a>
+<ul><li><a href="https://time.is/Beijing" class="s16">Beijing</a></li>
+<li><a href="https://time.is/Chengdu" class="s14">Chengdu</a></li>
+<li><a href="https://time.is/Chongqing" class="s13">Chongqing</a></li>
+<li><a href="https://time.is/Dongguan" class="s11">Dongguan</a></li>
+<li><a href="https://time.is/Guangzhou" class="s12">Guangzhou</a></li>
+<li><a href="https://time.is/Nanjing" class="s15">Nanjing</a></li>
+<li><a href="https://time.is/Shanghai" class="s12">Shanghai</a></li>
+<li><a href="https://time.is/Shenzhen" class="s12">Shenzhen</a></li>
+<li><a href="https://time.is/Tianjin" class="s13">Tianjin</a></li>
+<li><a href="https://time.is/Wuhan" class="s11">Wuhan</a></li>
+</ul></li>
+<li id="c247"><a href="https://time.is/Hong_Kong" class="s4 country bold" onmouseover="hvr(247,1)" onmouseout="hvr(247)">Hong Kong</a>
+</li>
+<li id="c250"><a href="https://time.is/Indonesia" class="s4 country multizone bold" onmouseover="hvr(250,1)" onmouseout="hvr(250)">Indonesia</a>
+<ul><li><a href="https://time.is/Banjarmasin" class="s15">Banjarmasin</a></li>
+<li><a href="https://time.is/City_of_Balikpapan" class="s15">City of Balikpapan</a></li>
+<li><a href="https://time.is/Makassar" class="s16">Makassar</a></li>
+</ul></li>
+<li id="c257"><a href="https://time.is/Macao" class="s2 country bold" onmouseover="hvr(257,1)" onmouseout="hvr(257)">Macau</a>
+</li>
+<li id="c253"><a href="https://time.is/Malaysia" class="s2 country bold" onmouseover="hvr(253,1)" onmouseout="hvr(253)">Malaysia</a>
+<ul><li><a href="https://time.is/Klang" class="s7">Klang</a></li>
+<li><a href="https://time.is/Kota_Bharu" class="s6 bold">Kota Bharu</a></li>
+<li><a href="https://time.is/Kuala_Lumpur" class="s5 bold">Kuala Lumpur</a></li>
+</ul></li>
+<li id="c256"><a href="https://time.is/Mongolia" class="s1 country multizone bold" onmouseover="hvr(256,1)" onmouseout="hvr(256)">Mongolia</a>
+<ul><li><a href="https://time.is/Erdenet" class="s8">Erdenet</a></li>
+<li><a href="https://time.is/Ulan_Bator" class="s9">Ulan Bator</a></li>
+</ul></li>
+<li id="c252"><a href="https://time.is/Philippines" class="s3 country bold" onmouseover="hvr(252,1)" onmouseout="hvr(252)">Philippines</a>
+<ul><li><a href="https://time.is/Antipolo" class="s7">Antipolo</a></li>
+<li><a href="https://time.is/Bacolod_City" class="s6">Bacolod City</a></li>
+<li><a href="https://time.is/City_of_Cebu" class="s10">City of Cebu</a></li>
+<li><a href="https://time.is/Dadiangas" class="s7">Dadiangas</a></li>
+<li><a href="https://time.is/Davao_City" class="s11">Davao City</a></li>
+<li><a href="https://time.is/Manila" class="s14">Manila</a></li>
+<li><a href="https://time.is/Zamboanga_City" class="s6">Zamboanga City</a></li>
+</ul></li>
+<li id="c251"><a href="https://time.is/Russia" class="s4 country multizone bold" onmouseover="hvr(251,1)" onmouseout="hvr(251)">Russia</a>
+<ul><li><a href="https://time.is/Irkutsk" class="s14">Irkutsk</a></li>
+</ul></li>
+<li id="c248"><a href="https://time.is/Singapore" class="s3 country bold" onmouseover="hvr(248,1)" onmouseout="hvr(248)">Singapore</a>
+</li>
+<li id="c254"><a href="https://time.is/Taiwan" class="s1 country bold" onmouseover="hvr(254,1)" onmouseout="hvr(254)">Taiwan</a>
+<ul><li><a href="https://time.is/Kaohsiung" class="s10">Kaohsiung</a></li>
+<li><a href="https://time.is/Taipei" class="s8">Taipei</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+8:30</h1><div class="cloud scloud w90"><ul><li id="c259"><a href="https://time.is/North_Korea" class="s1 country bold" onmouseover="hvr(259,1)" onmouseout="hvr(259)">North Korea</a>
+<ul><li><a href="https://time.is/Hamhung" class="s2">Hamhung</a></li>
+<li><a href="https://time.is/Pyongyang" class="s3">Pyongyang</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+8:45</h1><div class="cloud scloud w90"><ul><li id="c260"><a href="https://time.is/Australia" class="s1 country multizone" onmouseover="hvr(260,1)" onmouseout="hvr(260)">Australia</a>
+</li>
+</ul></div></div><div class="section even"><h1>UTC+9</h1><div class="cloud scloud w90"><ul><li id="c265"><a href="https://time.is/East_Timor" class="s1 country bold" onmouseover="hvr(265,1)" onmouseout="hvr(265)">East Timor</a>
+<ul><li><a href="https://time.is/Dili" class="s9">Dili</a></li>
+</ul></li>
+<li id="c261"><a href="https://time.is/Indonesia" class="s5 country multizone bold" onmouseover="hvr(261,1)" onmouseout="hvr(261)">Indonesia</a>
+<ul><li><a href="https://time.is/Ambon_City" class="s16">Ambon City</a></li>
+<li><a href="https://time.is/Jayapura" class="s12">Jayapura</a></li>
+</ul></li>
+<li id="c263"><a href="https://time.is/Japan" class="s3 country bold" onmouseover="hvr(263,1)" onmouseout="hvr(263)">Japan</a>
+<ul><li><a href="https://time.is/Osaka" class="s10">Osaka</a></li>
+<li><a href="https://time.is/Tokyo" class="s15">Tokyo</a></li>
+<li><a href="https://time.is/Yokohama" class="s11">Yokohama</a></li>
+</ul></li>
+<li id="c266"><a href="https://time.is/Palau" class="s1 country bold" onmouseover="hvr(266,1)" onmouseout="hvr(266)">Palau</a>
+</li>
+<li id="c262"><a href="https://time.is/Russia" class="s4 country multizone bold" onmouseover="hvr(262,1)" onmouseout="hvr(262)">Russia</a>
+<ul><li><a href="https://time.is/Chita" class="s13">Chita</a></li>
+<li><a href="https://time.is/Yakutsk" class="s14">Yakutsk</a></li>
+</ul></li>
+<li id="c264"><a href="https://time.is/South_Korea" class="s2 country bold" onmouseover="hvr(264,1)" onmouseout="hvr(264)">South Korea</a>
+<ul><li><a href="https://time.is/Busan" class="s7">Busan</a></li>
+<li><a href="https://time.is/Incheon" class="s8">Incheon</a></li>
+<li><a href="https://time.is/Seoul" class="s6">Seoul</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+9:30</h1><div class="cloud scloud w90"><ul><li id="c267"><a href="https://time.is/Australia" class="s1 country multizone bold" onmouseover="hvr(267,1)" onmouseout="hvr(267)">Australia</a>
+<ul><li><a href="https://time.is/Darwin" class="s3">Darwin</a></li>
+<li><a href="https://time.is/Northern_Territory" class="s2">Northern Territory</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+10</h1><div class="cloud scloud w90"><ul><li id="c269"><a href="https://time.is/Australia" class="s5 country multizone bold" onmouseover="hvr(269,1)" onmouseout="hvr(269)">Australia</a>
+<ul><li><a href="https://time.is/Brisbane" class="s14">Brisbane</a></li>
+<li><a href="https://time.is/Gold_Coast" class="s12">Gold Coast</a></li>
+<li><a href="https://time.is/Queensland" class="s7">Queensland</a></li>
+</ul></li>
+<li id="c271"><a href="https://time.is/Guam" class="s3 country bold" onmouseover="hvr(271,1)" onmouseout="hvr(271)">Guam</a>
+<ul><li><a href="https://time.is/Hag%C3%A5t%C3%B1a" class="s9">Hagåtña</a></li>
+</ul></li>
+<li id="c272"><a href="https://time.is/Micronesia" class="s1 country multizone bold" onmouseover="hvr(272,1)" onmouseout="hvr(272)">Micronesia</a>
+<ul><li><a href="https://time.is/Moen" class="s10">Moen</a></li>
+</ul></li>
+<li id="c273"><a href="https://time.is/Northern_Mariana_Islands" class="s2 country bold" onmouseover="hvr(273,1)" onmouseout="hvr(273)">Northern Mariana Islands</a>
+</li>
+<li id="c270"><a href="https://time.is/Papua_New_Guinea" class="s4 country bold" onmouseover="hvr(270,1)" onmouseout="hvr(270)">Papua New Guinea</a>
+<ul><li><a href="https://time.is/Lae" class="s8">Lae</a></li>
+<li><a href="https://time.is/Port_Moresby" class="s11">Port Moresby</a></li>
+</ul></li>
+<li id="c268"><a href="https://time.is/Russia" class="s6 country multizone" onmouseover="hvr(268,1)" onmouseout="hvr(268)">Russia</a>
+<ul><li><a href="https://time.is/Khabarovsk" class="s13">Khabarovsk</a></li>
+<li><a href="https://time.is/Vladivostok" class="s15">Vladivostok</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+10:30</h1><div class="cloud scloud w90"><ul><li id="c274"><a href="https://time.is/Australia" class="s1 country multizone bold" onmouseover="hvr(274,1)" onmouseout="hvr(274)">Australia</a>
+<ul><li><a href="https://time.is/Adelaide" class="s4">Adelaide</a></li>
+<li><a href="https://time.is/Adelaide_Hills" class="s3">Adelaide Hills</a></li>
+<li><a href="https://time.is/South_Australia" class="s2">South Australia</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+11</h1><div class="cloud scloud w90"><ul><li id="c276" class=""><a href="https://time.is/Australia" class="s4 country multizone bold" onmouseover="hvr(276,1)" onmouseout="hvr(276)">Australia</a>
+<ul><li><a href="https://time.is/Australian_Capital_Territory" class="s9">Australian Capital Territory</a></li>
+<li><a href="https://time.is/Canberra" class="s15">Canberra</a></li>
+<li><a href="https://time.is/New_South_Wales" class="s7">New South Wales</a></li>
+<li><a href="https://time.is/Sydney" class="s14">Sydney</a></li>
+<li><a href="https://time.is/Tasmania" class="s8">Tasmania</a></li>
+<li><a href="https://time.is/Victoria" class="s6">Victoria</a></li>
+</ul></li>
+<li id="c280"><a href="https://time.is/Micronesia" class="s1 country multizone bold" onmouseover="hvr(280,1)" onmouseout="hvr(280)">Micronesia</a>
+<ul><li><a href="https://time.is/Palikir" class="s11">Palikir</a></li>
+</ul></li>
+<li id="c279"><a href="https://time.is/New_Caledonia" class="s2 country bold" onmouseover="hvr(279,1)" onmouseout="hvr(279)">New Caledonia</a>
+<ul><li><a href="https://time.is/Noumea" class="s10">Noumea</a></li>
+</ul></li>
+<li id="c281"><a href="https://time.is/Norfolk_Island" class="s1 country bold" onmouseover="hvr(281,1)" onmouseout="hvr(281)">Norfolk Island</a>
+<ul><li><a href="https://time.is/Kingston,_Norfolk_Island" class="s11">Kingston</a></li>
+</ul></li>
+<li id="c275"><a href="https://time.is/Russia" class="s6 country multizone" onmouseover="hvr(275,1)" onmouseout="hvr(275)">Russia</a>
+<ul><li><a href="https://time.is/Yuzhno-Sakhalinsk" class="s16">Yuzhno-Sakhalinsk</a></li>
+</ul></li>
+<li id="c277"><a href="https://time.is/Solomon_Islands" class="s5 country bold" onmouseover="hvr(277,1)" onmouseout="hvr(277)">Solomon Islands</a>
+<ul><li><a href="https://time.is/Honiara" class="s13">Honiara</a></li>
+</ul></li>
+<li id="c278"><a href="https://time.is/Vanuatu" class="s3 country bold" onmouseover="hvr(278,1)" onmouseout="hvr(278)">Vanuatu</a>
+<ul><li><a href="https://time.is/Port_Vila" class="s12">Port Vila</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+12</h1><div class="cloud scloud w90"><ul><li id="c283" class=""><a href="https://time.is/Fiji" class="s6 country" onmouseover="hvr(283,1)" onmouseout="hvr(283)">Fiji</a>
+<ul><li><a href="https://time.is/Suva" class="s12">Suva</a></li>
+</ul></li>
+<li id="c284"><a href="https://time.is/Kiribati" class="s7 country multizone" onmouseover="hvr(284,1)" onmouseout="hvr(284)">Kiribati</a>
+<ul><li><a href="https://time.is/Tarawa" class="s11">Tarawa</a></li>
+</ul></li>
+<li id="c285"><a href="https://time.is/Marshall_Islands" class="s5 country" onmouseover="hvr(285,1)" onmouseout="hvr(285)">Marshall Islands</a>
+<ul><li><a href="https://time.is/Majuro" class="s10">Majuro</a></li>
+</ul></li>
+<li id="c288"><a href="https://time.is/Nauru" class="s2 country bold" onmouseover="hvr(288,1)" onmouseout="hvr(288)">Nauru</a>
+</li>
+<li id="c282"><a href="https://time.is/Russia" class="s8 country multizone" onmouseover="hvr(282,1)" onmouseout="hvr(282)">Russia</a>
+<ul><li><a href="https://time.is/Petropavlovsk-Kamchatsky" class="s13">Petropavlovsk-Kamchatsky</a></li>
+</ul></li>
+<li id="c287"><a href="https://time.is/Tuvalu" class="s1 country bold" onmouseover="hvr(287,1)" onmouseout="hvr(287)">Tuvalu</a>
+</li>
+<li id="c289"><a href="https://time.is/U.S._Minor_Outlying_Islands" class="s3 country multizone bold" onmouseover="hvr(289,1)" onmouseout="hvr(289)">U.S. Minor Outlying Islands</a>
+</li>
+<li id="c286"><a href="https://time.is/Wallis_and_Futuna" class="s4 country bold" onmouseover="hvr(286,1)" onmouseout="hvr(286)">Wallis and Futuna</a>
+<ul><li><a href="https://time.is/Mata-Utu" class="s9">Mata-Utu</a></li>
+</ul></li>
+</ul></div></div><div class="section even"><h1>UTC+13</h1><div class="cloud scloud w90"><ul><li id="c292"><a href="https://time.is/Kiribati" class="s2 country multizone bold" onmouseover="hvr(292,1)" onmouseout="hvr(292)">Kiribati</a>
+</li>
+<li id="c290"><a href="https://time.is/New_Zealand" class="s4 country multizone" onmouseover="hvr(290,1)" onmouseout="hvr(290)">New Zealand</a>
+<ul><li><a href="https://time.is/Auckland" class="s6">Auckland</a></li>
+<li><a href="https://time.is/Wellington" class="s7">Wellington</a></li>
+</ul></li>
+<li id="c293"><a href="https://time.is/Tokelau" class="s1 country bold" onmouseover="hvr(293,1)" onmouseout="hvr(293)">Tokelau</a>
+</li>
+<li id="c291" class="on"><a href="https://time.is/Tonga" class="s3 country" onmouseover="hvr(291,1)" onmouseout="hvr(291)">Tonga</a>
+<ul><li><a href="https://time.is/Nuku&#39;alofa" class="s5">Nuku'alofa</a></li>
+</ul></li>
+</ul></div></div><div class="section odd"><h1>UTC+13:45</h1><div class="cloud scloud w90"><ul><li id="c294"><a href="https://time.is/New_Zealand" class="s1 country multizone" onmouseover="hvr(294,1)" onmouseout="hvr(294)">New Zealand</a>
+</li>
+</ul></div></div><div class="section even"><h1>UTC+14</h1><div class="cloud scloud w90"><ul><li id="c296"><a href="https://time.is/Kiribati" class="s1 country multizone bold" onmouseover="hvr(296,1)" onmouseout="hvr(296)">Kiribati</a>
+<ul><li><a href="https://time.is/Tabwakea_Village" class="s3">Tabwakea Village</a></li>
+</ul></li>
+<li id="c295"><a href="https://time.is/Samoa" class="s2 country" onmouseover="hvr(295,1)" onmouseout="hvr(295)">Samoa</a>
+<ul><li><a href="https://time.is/Apia" class="s4">Apia</a></li>
+</ul></li>
+</ul></div></div><div class="w90" style="padding-bottom:40px"><div><div></div></div><div class="noprint tr faded" style="position:relative;float:left;margin-left:-10px;">
+<div id="socbuttons" class="off" style="height: 32px; margin-left: 10px; visibility: inherit;"><a id="btn_f" href="https://time.is/" onclick="return t_sb(&#39;f&#39;)" onmouseover="hv_sb(&#39;f&#39;,0)" onmouseout="hv_sb(&#39;f&#39;,32)" style="display:block;float:left;margin-right:10px;border:0;width:32px;height:32px;background:url(&#39;https://static.time.is/img/social_icons5.png&#39;) 224px 32px"></a><a id="btn_t" href="https://time.is/" onclick="return t_sb(&#39;t&#39;)" onmouseover="hv_sb(&#39;t&#39;,0)" onmouseout="hv_sb(&#39;t&#39;,32)" style="display:block;float:left;margin-right:10px;border:0;width:32px;height:32px;background:url(&#39;https://static.time.is/img/social_icons5.png&#39;) 192px 32px"></a><a id="btn_g" href="https://time.is/" onclick="return t_sb(&#39;g&#39;)" onmouseover="hv_sb(&#39;g&#39;,0)" onmouseout="hv_sb(&#39;g&#39;,32)" style="display:block;float:left;margin-right:10px;border:0;width:32px;height:32px;background:url(&#39;https://static.time.is/img/social_icons5.png&#39;) 160px 32px"></a><a id="btn_in" href="https://time.is/" onclick="return t_sb(&#39;in&#39;)" onmouseover="hv_sb(&#39;in&#39;,0)" onmouseout="hv_sb(&#39;in&#39;,32)" style="display:block;float:left;margin-right:10px;border:0;width:32px;height:32px;background:url(&#39;https://static.time.is/img/social_icons5.png&#39;) 128px 32px"></a><a id="btn_su" href="https://time.is/" onclick="return t_sb(&#39;su&#39;)" onmouseover="hv_sb(&#39;su&#39;,0)" onmouseout="hv_sb(&#39;su&#39;,32)" style="display:block;float:left;margin-right:10px;border:0;width:32px;height:32px;background:url(&#39;https://static.time.is/img/social_icons5.png&#39;) 96px 32px"></a><a id="btn_p" href="https://time.is/" onclick="return t_sb(&#39;p&#39;)" onmouseover="hv_sb(&#39;p&#39;,0)" onmouseout="hv_sb(&#39;p&#39;,32)" style="display:block;float:left;margin-right:10px;border:0;width:32px;height:32px;background:url(&#39;https://static.time.is/img/social_icons5.png&#39;) 64px 32px"></a><a id="btn_m" href="https://time.is/" onclick="return t_sb(&#39;m&#39;)" onmouseover="hv_sb(&#39;m&#39;,0)" onmouseout="hv_sb(&#39;m&#39;,32)" style="display:block;float:left;margin-right:10px;border:0;width:32px;height:32px;background:url(&#39;https://static.time.is/img/social_icons5.png&#39;) 32px 32px"></a></div><div id="social_div" class="hide"><div id="fb-root"></div><div id="socb_f" class="hide"><div class="fb-like" data-href="https://time.is/time_zones" data-send="true" data-width="284" data-show-faces="true" data-colorscheme="dark"></div></div><div id="socb_t" style="width:284px" class="hide"></div><div id="socb_g" class="hide"><div><div class="g-plusone" data-annotation="none"></div></div><div style="clear:none;padding-left:5px"><div class="g-plus" data-action="share" data-height="24"></div></div></div><div id="linkedin" style="margin-right:44px" class="hide"><div style="color:#999">loading...</div></div><div id="socb_in" style="margin:0 96px 0 126px" class="hide"><div style="color:#999">loading...</div></div><div id="socb_su" style="margin:0 56px 0 168px" class="hide"><su:badge layout="2"><div style="color:#999">loading...</div></su:badge></div><div id="socb_p" style="margin:0 12px 0 210px" class="hide"><a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Ftime.is%2Ftime_zones&amp;media=%2F%2Fstatic.time.is%2Fscreenshots%2FTime.is_11.11.11_700x525.png&amp;description=Exact+time+for+any+place+on+earth%3A+https%3A%2F%2Ftime.is%2F" class="pin-it-button" count-layout="horizontal" id="pinA"></a></div><div id="socb_m" class="hide"><form id="mailform" action="https://time.is/mail" method="post" autocomplete="off" accept-charset="UTF-8" onsubmit="return ajMail(gob(&#39;sender_name&#39;).value,gob(&#39;sender_email&#39;).value,gob(&#39;receiver_name&#39;).value,gob(&#39;receiver_email&#39;).value,&#39;time_zones&#39;,&#39;mailstatusdiv&#39;)"><label for="sender_name" id="sender_name_label" class="blr">Your name</label><input type="text" id="sender_name" name="sender_name" value="" maxlength="100" class="txtin blr mout" onfocus="focusitem(this);focusitem(&#39;sender_name_label&#39;)" onblur="bluritem(this);bluritem(&#39;sender_name_label&#39;)" onmouseover="mouseover(this)" onmouseout="mouseout(this)" style="width:270px;padding:5px"><label for="sender_email" id="sender_email_label" class="blr">Your email address<br>(will not be shared)</label><input type="email" id="sender_email" name="sender_email" value="" maxlength="100" class="txtin blr mout" onfocus="focusitem(this);focusitem(&#39;sender_email_label&#39;)" onblur="bluritem(this);bluritem(&#39;sender_email_label&#39;)" onmouseover="mouseover(this)" onmouseout="mouseout(this)" style="width:270px;padding:5px"><label for="receiver_name" id="receiver_name_label" class="blr">Receiver's name</label><input type="text" id="receiver_name" name="receiver_name" value="" maxlength="100" class="txtin blr mout" onfocus="focusitem(this);focusitem(&#39;receiver_name_label&#39;)" onblur="bluritem(this);bluritem(&#39;receiver_name_label&#39;)" onmouseover="mouseover(this)" onmouseout="mouseout(this)" style="width:270px;padding:5px"><label for="receiver_email" id="receiver_email_label" class="blr">Receiver's e-mail address</label><input type="email" id="receiver_email" name="receiver_email" value="" maxlength="100" required="required" class="txtin blr mout" onfocus="focusitem(this);focusitem(&#39;receiver_email_label&#39;)" onblur="bluritem(this);bluritem(&#39;receiver_email_label&#39;)" onmouseover="mouseover(this)" onmouseout="mouseout(this)" style="width:270px;padding:5px"><input type="hidden" name="url" value="time_zones"><input type="submit" accesskey="3" value="Send message" class="button blr mout" onfocus="focusitem(this)" onblur="bluritem(this)" onmouseover="mouseover(this)" onmouseout="mouseout(this)"></form><div id="mailstatusdiv"></div></div></div>
+<div class="noprint tr" style="font-size:14px;float:left;margin:0 10px 10px 10px">Share this page!</div></div><div class="rad" style="float:left"><div id="ad_2" style="width:768px;height:90px">
+<noscript>&lt;iframe id="d81a41af63" name="d81a41af63" src="//pixfuture-d.openx.net/w/1.0/afr?auid=538090346&amp;cb=130" frameborder="0" scrolling="no" width="768" height="90"&gt;&lt;a href="//pixfuture-d.openx.net/w/1.0/rc?cs=d81a41af63&amp;cb=130" &gt;&lt;img src="//pixfuture-d.openx.net/w/1.0/ai?auid=538090346&amp;cs=d81a41af63&amp;cb=130" border="0" alt=""&gt;&lt;/a&gt;&lt;/iframe&gt;</noscript>
+</div>
+<script>
+var OX_ads=OX_ads||[]
+OX_ads.push({slot_id:"ad_2",auid:"538090346"})
+</script>
+<script src="https://pixfuture-d.openx.net/w/1.0/jstag"></script></div></div><div id="time_section" class="w1" style="margin-top: 0px;"><div id="msgs" class="tr w90 hide"><div id="msgdiv"><div id="syncH" style="float:left" class="hide">Your clock is 0.4 seconds behind.</div></div><div id="syncDtl" class="w1 hide">Accuracy of synchronization was ±0.017 seconds.</div></div><div id="clock0_bg" class="factspage" ondblclick="t_s()"><div class="w90" style="width:95%">
+<div id="clock0" style="font-size:100px;line-height:83px"><div id="twd">09:44:<span id="leaps" class="leap0">17</span><span id="ampm" style="font-size:21px;line-height:21px">pm</span></div></div></div></div><noscript>&lt;h2 class="w90 error"&gt;The clock will update automatically if you turn on JavaScript in your browser.&lt;/h2&gt;</noscript><div id="dd" class="w90 tr" onclick="location=&#39;/calendar&#39;" title="Click for calendar">Wednesday, January 4, 2017</div><div id="daydiv" class="hidden" style="display:none"></div><div id="lC" class="w90 tr"><span id="locw">Sun: <span id="sun" class="nw">↑ 07:24AM ↓ 05:05PM (9h 41m)</span> <a href="https://time.is/San_Mateo,_California#time_zone">More info</a></span><div class="lsp w90 tr"></div></div>
+</div>
+<script>
+bod=gob('bdy')
+var l='en',conf={d:'%l, %F %j, %Y',t:'h:i:sA',f:'o',c:'2',o:'',z:'1',a:'1',b:'51ea29.4e4185.28571f.2d99db.80265.1bb85e.1c3b23',w:'1',v:'20170105',h:0,i:'',Z:'1',m:'',u:''},locs={"favs":[],"main":[['5392423','14e','San Mateo','San Mateo, California, United States','San_Mateo,_California','37.56299','-122.32553','97,207','13']]},zones={'14e':['America/Los_Angeles','PST',[-480,1489312800,-420]]},
+susdest="/"
+zone_id="America/Los_Angeles"
+zone_offset=-480
+zone_code='14e'
+p_time_diff="The difference from Time.is was %t (±%D). "
+p_time_diff_short="Diff: %t (±%D) "
+p_failh="The synchronization was unsuccessful. "
+p_fail="High accuracy could not be achieved because your connection or computer is slow or busy. "
+p_syncing="Synchronizing"
+p_conn_failed="Unable to connect with server."
+p_try_again="Try again?"
+p_no_match="No match"
+p_no_au="Sorry, sound requires a recent version of Firefox, Opera or Safari!"
+p_no_cookie_support="error_no_cookie_support"
+p_td="Today"
+e_loc="Enter location"
+
+days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+daysh=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+daysI=["S","M","T","W","T","F","S"]
+months=["January","February","March","April","May","June","July","August","September","October","November","December"]
+monthsh=["Jan.","Feb.","Mar.","Apr.","May","June","July","Aug.","Sept.","Oct.","Nov.","Dec."]
+p_exactt="Your time is exact!"
+p_t_is="The exact current time is:"
+p_w="week "
+p_wn="week %n"
+p_d="day"
+p_ds=" days"
+p_h=" hour"
+p_hs=" hours"
+p_m=" minute"
+p_ms=" minutes"
+p_s=" second"
+p_ss=" seconds"
+p_ss_short=" s"
+p_ur_late="Your clock is %t behind."
+p_ur_early="Your clock is %t ahead."
+p_acc="Accuracy of synchronization was ±%t."
+p_acc_short="Sync accuracy: ±%t"
+p_last_s="Last synchronization: %t"
+p_last_s_short="Last sync: %t"
+p_dec_sym="."
+p_and=" and "
+p_time_remaining="Time remaining: %t"
+p_time_since="Time since then: %t"
+
+p_now='now'
+p_yesterday='yesterday'
+p_tomorrow='tomorrow'
+p_today='today'
+p_in_n='in %n'
+p_ago='%n ago'
+p_In_x_days='In %n %days'
+p_x_days_ago='%n %days ago'
+p_x_days_before='[%n %days before] %other_date'
+p_x_days_after='[%n %days after] %other_date'
+
+p_today_date='[Today]: %d'
+units=[p_ss,p_ms,p_hs,p_ds],units_sing=[p_s,p_m,p_h,' '+p_d]
+
+p_enter_loc='Enter location'
+
+p_default_time_format='h:i:sA'
+p_date_formats=['%l, %F %j, %Y',
+'%l %d/%m/%y',
+'%l %d/%m/%y, %W',
+'%Y-%m-%d']
+
+
+spdays={}
+bgim=""
+noctp=1;adheight=0;show_big_clock=0;force24=0;beginning_of_time()
+onresize=function(){setsizes(2)}
+</script>
+<div id="menupositioner" class="tr">
+<div id="close-menu" class="close-btn" onclick="toggle_menu(0)">×</div>
+
+<nav id="nav">
+<div>
+<h3 style="letter-spacing:1px"><a href="https://time.is/" class="logo">Time.is</a> <span class="slogan"><span>- </span>exact time for any time zone</span></h3>
+
+<div id="menulinks"><ul><li><a href="https://time.is/">Exact time now</a></li><li><a href="https://time.is/compare">Time here&amp;there</a></li><li class="chosen"><a href="https://time.is/time_zones">Time zones</a></li><li><a href="https://time.is/just">Just time</a></li><li><a href="https://time.is/calendar">Calendar</a></li><li id="aub"><a href="https://time.is/sound">Sound</a></li><li><a href="https://time.is/customize">Customize</a></li></ul><ul><li><a href="https://time.is/apps">Apps</a></li><li><a href="https://time.is/widgets">Widgets</a></li><li><a href="https://time.is/time_zone_news">Time zone news</a></li><li><a href="https://time.is/mailing_list">Newsletter</a></li></ul><ul><li><a href="https://time.is/UTC">UTC</a></li><li><a href="https://time.is/Unix_time_now">Unix clock</a></li><li><a href="https://time.is/Unix_time_converter">Unix time converter</a></li></ul><ul><li><a href="https://time.is/about">About</a></li><li><a href="https://time.is/contact">Contact</a></li></ul>
+</div>
+</div>
+
+<div id="follow_app">
+<div id="follow"><div>Follow us</div>
+<a href="https://www.facebook.com/exact.time.is" target="_blank" style="background:url(&#39;//static.time.is/img/social_icons5.png&#39;) 224px 32px" onmouseover="Zpos(this,224,0)" onmouseout="Zpos(this,224,32)" title="Follow Time.is on Facebook">Facebook</a>
+<a href="https://twitter.com/Time_is" target="_blank" style="background:url(&#39;//static.time.is/img/social_icons5.png&#39;) 192px 32px" onmouseover="Zpos(this,192,0)" onmouseout="Zpos(this,192,32)" title="Follow Time.is on Twitter">Twitter</a>
+<a href="https://plus.google.com/+timeis/posts" target="_blank" style="background:url(&#39;//static.time.is/img/social_icons5.png&#39;) 160px 32px" onmouseover="Zpos(this,160,0)" onmouseout="Zpos(this,160,32)" title="Follow Time.is on Google+">Google+</a>
+</div>
+<div id="appbadge"><a href="https://itunes.apple.com/app/time.is-exact-time-for-any/id857189816?l=nb&amp;ls=1&amp;mt=8"><img src="./fttb_files/Download_on_the_App_Store_Badge_US-UK_135x40.png" alt="Download on the App Store"></a></div>
+</div>
+
+</nav>
+
+<footer id="footer">
+<nav><ul class="hzlist" style="padding-bottom:0"><li class="first"><a href="https://time.is/advertise">Advertise</a></li><li class="last"><a href="https://time.is/terms_of_use">Terms of use</a></li><li><a href="https://time.is/terms_of_use#privacy_policy">Privacy policy</a></li></ul></nav>
+<div>
+Time.is displays exact, official atomic clock time for any time zone (more than 7 million locations) in 45 languages.<br>
+Automated access is prohibited. 
+Support for cookies and JavaScript is required.
+<br>
+Copyright © 2009-2017 <a href="http://digitz.no/">Digitz.no</a>.
+<span class="nw">All rights reserved.</span>
+</div>
+<div id="footerlangs">
+<br><a href="https://time.is/?lang=en">English</a>
+<a href="https://time.is/?lang=zh" title="Chinese (simplified)">中文</a>
+<a href="https://time.is/?lang=ar" title="Arabic">العربية</a>
+<a href="https://time.is/?lang=de" title="German">Deutsch</a>
+<a href="https://time.is/?lang=es" title="Spanish">español</a>
+<a href="https://time.is/?lang=fr" title="French">français</a>
+<a href="https://time.is/?lang=hi" title="Hindi">हिंदी</a>
+<a href="https://time.is/?lang=ja" title="Japanese">日本語</a>
+<a href="https://time.is/?lang=pt_br" title="Portuguese (Brazil)">português (Brasil)</a>
+<a href="https://time.is/?lang=ru" title="Russian">русский</a>
+<a href="https://time.is/languages" class="nowrap">≫ choose language</a>
+</div>
+</footer>
+</div><script>function hvr(n,x){
+var c='',o
+if(x===1)c='on'
+o=gob('c'+n)
+if(typeof o!==U)o.className=o.className=c
+}
+</script><script>
+var lang='en_US',glang='en',tweet='Time for San Mateo: ',like_url='/time_zones'
+function in_s(){init_s('right','https://time.is/time_zones','https%3A%2F%2Ftime.is%2Ftime_zones','%2F%2Fstatic.time.is%2Fscreenshots%2FTime.is_11.11.11_700x525.png','Exact+time+for+any+place+on+earth%3A+https%3A%2F%2Ftime.is%2F','time_zones',' data-colorscheme="dark"','loading...','Your name','Your email address<br>(will not be shared)','Receiver\'s name','Receiver\'s e-mail address','Send message')}
+</script><script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create','UA-69493661-1','auto')
+ga('send','pageview')
+</script>
+<script>
+_atrk_opts={atrk_acct:"sAKmm1akGFL1fn",domain:"time.is",dynamic:true};
+(function(){var as=document.createElement('script');as.type='text/javascript';as.async=true;as.src="https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as,s);})();
+</script>
+<noscript>&lt;img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=sAKmm1akGFL1fn" style="display:none" height="1" width="1" alt="" /&gt;</noscript>
+</body></html>

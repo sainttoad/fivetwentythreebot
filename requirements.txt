@@ -1,0 +1,4 @@
+python-twitter
+pytz
+bs4
+requests
