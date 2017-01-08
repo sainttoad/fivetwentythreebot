@@ -1,2 +1,4 @@
 *.key
 venv.*
+.DS_Store
+*.zip

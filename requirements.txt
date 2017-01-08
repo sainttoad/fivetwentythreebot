@@ -2,3 +2,5 @@ python-twitter
 pytz
 bs4
 requests
+pyshp
+shapely
