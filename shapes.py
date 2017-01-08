@@ -29,4 +29,4 @@ for zone in sorted(zones):
 
         point = random_point_in(poly)
 
-        print("{} : {}".format(zone, point))
+        print("{} : {}/{}".format(zone, point.y, point.x))
