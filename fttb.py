@@ -38,18 +38,24 @@ class Tweeter(object):
 
     def tweet_for(self, point):
         lat, lon = point.y, point.x
-        parameters = dict(lat=lat, long=lon)
+        parameters = dict(lat=lat, long=lon, granularity='city')#, accuracy='5000m')
 
         # either one seems to work with this code : maybe try one if the other is rate limited?
         #
-        url = '%s/geo/reverse_geocode.json' % (self.api.base_url)
-        # url = '%s/geo/search.json' % (self.api.base_url)
+        #url = '%s/geo/reverse_geocode.json' % (self.api.base_url)
+        url = '%s/geo/search.json' % (self.api.base_url)
 
         try:
             resp = self.api._RequestUrl(url, 'GET', data=parameters)
             data = self.api._ParseAndCheckTwitter(resp.content.decode('utf-8'))
+            
+            cities = [ place for place in data['result']['places'] if place.get('place_type') == 'city' ]
+            if cities:
+                choices = cities
+            else:
+                choices = data['result']['places']
 
-            place = random.choice(data['result']['places'])
+            place = random.choice(choices)
             name, country = place['name'].encode('utf-8'), place['country'].encode('utf-8')
         except Exception as e:
             print(e)
